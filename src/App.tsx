@@ -10,8 +10,11 @@ import Cart from "./pages/Cart";
 import MyWishList from "./pages/MyWishList";
 import Products from "./pages/Products";
 
+import ProductList from './components/products/ProductList';
+
 function App() {
   return (
+
     <Box className="App">
       <NavBar />
       <Routes>
@@ -21,6 +24,7 @@ function App() {
         <Route path="/products" element={<Products />}></Route>
       </Routes>
     </Box>
+
   );
 }
 
