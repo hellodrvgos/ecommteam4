@@ -39,6 +39,7 @@
 
 .footer {
   display: flex;
+  box-sizing: border-box;
   flex-flow: row wrap;
   padding: 30px 30px 20px 30px;
   color: #2f2f2f;
