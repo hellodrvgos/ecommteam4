@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { RootState, AppDispatch } from "../../redux/store"
 import { fetchProductData } from "../../redux/thunk/products";
 import ProductItem from "./ProductItem";
+import SearchBar from "../search/SearchBar";
 
 export default function ProductList() {
 
@@ -11,19 +12,37 @@ export default function ProductList() {
 
     const dispatch = useDispatch<AppDispatch>();
 
+    const searchResultList =  useSelector((state: RootState) => state.searchresults.searchResultList);
+
     useEffect(() => {
         dispatch(fetchProductData())
     }, [dispatch]);
 
+    const showProductList = () => {
+        return (
+            productList.map((product) => (
+                <ProductItem key={product.id} product={product}/>
+            ))
+        )
+    }
+
+    const showSearchResultList = () => {
+        return (
+            searchResultList.map((product) => (
+                <ProductItem key={product.id} product={product}/>
+            ))
+        )
+    }
+
     return (
             <div>
                 This is ProductList
+                <SearchBar/>
                 {
-                productList.map((product) => {
-                    return <ProductItem key={product.id} product={product} />
-                })
-            }
+                    searchResultList.length > 0 ?
+                    showSearchResultList() :
+                    showProductList()
+                }
             </div>
-
     )
 }
