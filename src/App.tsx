@@ -12,7 +12,7 @@ import Products from "./pages/Products";
 
 import ProductList from './components/products/ProductList';
 import Footer from "./components/footer/Footer";
-
+import ProductDetail from "./components/productDetail/ProductDetail"
 function App() {
   return (
 
@@ -23,6 +23,7 @@ function App() {
         <Route path="/shoppingCart" element={<Cart />}></Route>
         <Route path="/myWishList" element={<MyWishList />}></Route>
         <Route path="/products" element={<Products />}></Route>
+        <Route path="/products/:productId" element={<ProductDetail/>}></Route>
       </Routes>
       <Footer/>
     </Box>
