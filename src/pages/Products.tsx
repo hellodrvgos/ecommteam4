@@ -1,7 +1,3 @@
 export default function Products() {
-    return (
-        <div>
-            This is Products
-        </div>
-    )
+  return <div>This is Products</div>;
 }
