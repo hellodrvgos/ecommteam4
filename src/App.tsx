@@ -11,6 +11,7 @@ import MyWishList from "./pages/MyWishList";
 import Products from "./pages/Products";
 
 import ProductList from './components/products/ProductList';
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/myWishList" element={<MyWishList />}></Route>
         <Route path="/products" element={<Products />}></Route>
       </Routes>
+      <Footer/>
     </Box>
 
   );
