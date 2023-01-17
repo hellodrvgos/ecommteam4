@@ -22,7 +22,6 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { ProductDetail } from "../../types/type";
 import "./ProductItem.css";
 import { Box } from "@mui/system";
-// import { productActions } from "../../redux/slice/products";
 import { wishActions } from "../../redux/slice/wishList";
 
 interface ExpandMoreProps extends IconButtonProps {
