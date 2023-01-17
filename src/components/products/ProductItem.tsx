@@ -17,17 +17,17 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { ProductDetail } from "../../types/type";
 import "./ProductItem.css";
 import { Box } from "@mui/system";
-import { productActions } from "../../redux/slice/products";
+// import { productActions } from "../../redux/slice/products";
+import { wishActions } from "../../redux/slice/wishList";
 
 export default function ProductItem({ product }: ProductDetail) {
   const dispatch = useDispatch<AppDispatch>();
-  const wishList = useSelector(
-    (state: RootState) => state.products.productList
-  );
+  const wishList = useSelector((state: RootState) => state.wish.wishList);
   const isDuplicated = wishList.some(
     (wishItem) =>
       wishItem.title.toLocaleLowerCase() === product.title.toLocaleLowerCase()
   );
+  console.log(isDuplicated, "isDuplicated");
   const isFavorite = wishList.some((element) => element.id === product.id);
 
   const [open, setOpen] = useState(false);
@@ -84,7 +84,7 @@ export default function ProductItem({ product }: ProductDetail) {
             onClick={() => {
               isDuplicated
                 ? handleClick()
-                : dispatch(productActions.addWish(product)) && handleAdd();
+                : dispatch(wishActions.addFav(product)) && handleAdd();
             }}
           />
         </CardActionArea>

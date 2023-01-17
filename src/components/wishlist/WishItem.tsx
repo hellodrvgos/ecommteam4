@@ -13,6 +13,7 @@ import { AppDispatch } from "../../redux/store";
 import { productActions } from "../../redux/slice/products";
 import { Product } from "../../types/type";
 import { Box } from "@mui/system";
+import { wishActions } from "../../redux/slice/wishList";
 
 type Prop = {
   product: Product;
@@ -23,7 +24,7 @@ function WishItem({ product, setOpen }: Prop) {
   const dispatch = useDispatch<AppDispatch>();
 
   const removeFav = () => {
-    dispatch(productActions.removeWish(product));
+    dispatch(wishActions.removeFav(product.id));
     setOpen(true);
   };
 

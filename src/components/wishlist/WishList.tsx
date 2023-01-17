@@ -14,7 +14,7 @@ import { Box } from "@mui/system";
 import WishItem from "./WishItem";
 
 export default function WishList() {
-  const list = useSelector((state: RootState) => state.products.productList);
+  const wishList = useSelector((state: RootState) => state.wish.wishList);
   const [open, setOpen] = useState(false);
 
   const handleClose = (
@@ -28,7 +28,7 @@ export default function WishList() {
   };
   const navigate = useNavigate();
   const navigateIcon = () => {
-    navigate("/countries");
+    navigate("/products");
   };
   return (
     <div>
@@ -50,7 +50,7 @@ export default function WishList() {
             <ArrowBackIosIcon />
           </IconButton>
         </Box>
-        {list.map((item) => (
+        {wishList.map((item) => (
           <WishItem setOpen={setOpen} key={item.id} product={item} />
         ))}
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
