@@ -1,77 +1,57 @@
+import React from "react";
+import { Link } from 'react-router-dom';
+
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+
 export default function Footer() {
     return (
-        <footer className="footer">
-            <div className="footer_addr">
-                <h1 className="footer_logo">Something</h1>
-                <h2>Contact</h2>
-                <address>
-                        Somewhere In The World
-                    <br/>
-                    <a className="footer_btn"
-                        href="mailto:example@gmail.com">
-                            Email Us
-                    </a>
-                </address>
-            </div>
-            <ul className="footer_nav">
-                <li className="nav_item">
-                    <h2 className="nav_title">
-                        Media
-                    </h2>
-                    <ul className="nav_ul">
-                        <li>
-                            <a href="#">Facebook</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Twitter</a>
-                        </li>
-                        <li>
-                            <a href="#">Instagram</a>
-                        </li>
-                        <li className="nav__item nav__item--extra">
-                        <h2 className="nav__title">Pages</h2>
-
-                        <ul className="nav__ul nav__ul--extra">
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">Products</a>
-                            </li>
-                            <li>
-                                <a href="#">Wishlist</a>
-                            </li>
-                            <li>
-                                <a href="#">Cart</a>
-                            </li>
-                        </ul>
-                    </li>
-                        <li className="nav__item">
-                            <h2 className="nav__title">
-                                Legal
-                            </h2>
-                        <ul className="nav__ul">
-                            <li>
-                                <a href="#">Privacy Policy</a>
-                            </li>
-                            <li>
-                                <a href="#">Terms of Use</a>
-                            </li>
-                            <li>
-                                <a href="#">Sitemap</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                    <div className="legal">
-                        <p>&copy; 2023 Something. All rights reserved.</p>
-                        <div className="legal__links">
-                            <span>Made with <span className="heart">♥</span> remotely from Anywhere</span>
+        <div className="footer">
+            <Paper
+                sx={{marginTop: 'calc(10% + 60px)',
+                width: '100%',
+                position: 'fixed',
+                bottom: 0,
+                }} component="footer" square variant="outlined">
+                <Container maxWidth="lg">
+                    <Box
+                        sx={{
+                        flexGrow: 1,
+                        justifyContent: "center",
+                        display: "flex",
+                        my: 1
+                        }}
+                    >
+                        <div className="icon">
+                            <FacebookIcon />
+                            <InstagramIcon sx={{ marginLeft: '22px', marginRight: '22px' }} />
+                            <TwitterIcon />
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </footer>
+                    </Box>
+
+                    <Box
+                        sx={{
+                        flexGrow: 1,
+                        justifyContent: "center",
+                        display: "flex",
+                        mb: 2,
+                        }}
+                    >
+                        <Typography
+                            variant="caption"
+                            color="initial"
+                        >
+                            Copyright &copy; 2023.
+                        </Typography>
+                    </Box>
+                </Container>
+            </Paper>
+        </div>
     )
 }
