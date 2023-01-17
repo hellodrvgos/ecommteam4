@@ -33,7 +33,7 @@ export default function ProductList() {
       <Box
         display="flex"
         flexWrap="wrap"
-        style={{ width: "90%", marginInline: "auto", marginBlock: "50px" }}
+        style={{ width: "90%", marginInline: "auto", marginBottom: "150px" }}
       >
         {productList.map((product) => (
           <ProductItem key={product.id} product={product} />
