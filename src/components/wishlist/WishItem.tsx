@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { AppDispatch } from "../../redux/store";
-import { productActions } from "../../redux/slice/products";
 import { Product } from "../../types/type";
 import { Box } from "@mui/system";
 import { wishActions } from "../../redux/slice/wishList";

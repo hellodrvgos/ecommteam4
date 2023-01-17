@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -20,7 +24,28 @@ import { Box } from "@mui/system";
 // import { productActions } from "../../redux/slice/products";
 import { wishActions } from "../../redux/slice/wishList";
 
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
 export default function ProductItem({ product }: ProductDetail) {
+  // expanded mode
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   const dispatch = useDispatch<AppDispatch>();
   const wishList = useSelector((state: RootState) => state.wish.wishList);
   const isDuplicated = wishList.some(
@@ -56,7 +81,7 @@ export default function ProductItem({ product }: ProductDetail) {
       <Card
         sx={{
           width: 300,
-          height: 500,
+          height: "auto",
           marginInline: "1rem",
           marginBlock: "1rem",
         }}
@@ -69,13 +94,15 @@ export default function ProductItem({ product }: ProductDetail) {
             alt="green iguana"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography
+              style={{ height: 200 }}
+              gutterBottom
+              variant="h5"
+              component="div"
+            >
               {product.title}
             </Typography>
             <Typography>{product.caterogy}</Typography>
-            <Typography variant="body2" color="text.secondary">
-              {product.description}
-            </Typography>
           </CardContent>
           <Box>{product.rating.rate}</Box>
           <FavoriteBorderIcon
@@ -87,7 +114,18 @@ export default function ProductItem({ product }: ProductDetail) {
                 : dispatch(wishActions.addFav(product)) && handleAdd();
             }}
           />
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
         </CardActionArea>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Typography> {product.description}</Typography>
+        </Collapse>
       </Card>
       <Snackbar open={add} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
