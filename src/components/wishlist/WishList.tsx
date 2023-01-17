@@ -9,7 +9,6 @@ import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
 
 import { RootState } from "../../redux/store";
-// import FavItem from "./FavItem";
 import { Box } from "@mui/system";
 import WishItem from "./WishItem";
 
@@ -38,7 +37,7 @@ export default function WishList() {
           width: "100%",
           margin: "auto",
           height: "100%",
-          marginBlock: "50px",
+          marginBlock: "100px",
         }}
         component={Paper}
       >

@@ -95,7 +95,7 @@ export default function ProductItem({ product }: ProductDetail) {
           />
           <CardContent>
             <Typography
-              style={{ height: 200 }}
+              style={{ height: 150 }}
               gutterBottom
               variant="h5"
               component="div"
