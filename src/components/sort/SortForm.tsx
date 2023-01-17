@@ -1,19 +1,15 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import { productActions } from "../../redux/slice/products";
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch } from "../../redux/store";
 import { fetchProductData } from "../../redux/thunk/products";
-import { Product } from "../../types/type";
 
 function SortForm() {
-  //   let productList = useSelector(
-  //     (state: RootState) => state.products.productList
-  //   );
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(fetchProductData());
@@ -22,19 +18,21 @@ function SortForm() {
   return (
     <div>
       <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">filter</InputLabel>
+        <InputLabel id="demo-simple-select-standard-label">
+          Filter by
+        </InputLabel>
         <Select labelId="demo-simple-select-helper-label" label="Age">
-          <MenuItem value="">
+          {/* <MenuItem value="">
             <em>None</em>
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem onClick={() => dispatch(productActions.sortByTitle())}>
-            sortByTitle
+            Title
           </MenuItem>
           <MenuItem onClick={() => dispatch(productActions.sortByPrice())}>
-            sortByPrice
+            Price
           </MenuItem>
           <MenuItem onClick={() => dispatch(productActions.sortByCategory())}>
-            sortByCategory
+            Category
           </MenuItem>
         </Select>
       </FormControl>
