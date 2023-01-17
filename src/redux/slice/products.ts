@@ -28,6 +28,43 @@ const productSlice = createSlice({
         state.productList.splice(result, 1);
       }
     },
+    sortByTitle: (state) => {
+      const sortTitle = state.productList.sort(function (a, b) {
+        if (a.title > b.title) {
+          return 1;
+        }
+        if (a.title < b.title) {
+          return -1;
+        }
+        return 0;
+      });
+      console.log(sortTitle, "sortTitle");
+      state.productList = sortTitle;
+    },
+    sortByPrice: (state) => {
+      const sortPrice = state.productList.sort(function (a, b) {
+        if (a.price > b.price) {
+          return 1;
+        }
+        if (a.price < b.price) {
+          return -1;
+        }
+        return 0;
+      });
+      state.productList = sortPrice;
+    },
+    sortByCategory: (state) => {
+      const sortCategory = state.productList.sort(function (a, b) {
+        if (a.category > b.category) {
+          return 1;
+        }
+        if (a.category < b.category) {
+          return -1;
+        }
+        return 0;
+      });
+      state.productList = sortCategory;
+    },
   },
 });
 

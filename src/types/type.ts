@@ -3,7 +3,7 @@ export type Product = {
     title: string;
     price: number;
     description: string;
-    caterogy: string;
+    category: string;
     image: string;
     rating: {
         rate: number;
@@ -12,5 +12,5 @@ export type Product = {
 }
 
 export type ProductDetail = {
-    product: Product;
-}
+  product: Product;
+};

@@ -56,7 +56,7 @@ export default function ProductItem({ product }: ProductDetail) {
     (wishItem) =>
       wishItem.title.toLocaleLowerCase() === product.title.toLocaleLowerCase()
   );
-  //console.log(isDuplicated, "isDuplicated");
+
   const isFavorite = wishList.some((element) => element.id === product.id);
   const updateProduct = {...product, quantity: 1}
   const cartList = useSelector((state: RootState)=> state.cart.cartList);
@@ -111,6 +111,7 @@ export default function ProductItem({ product }: ProductDetail) {
             height="140"
             image={product.image}
             alt="green iguana"
+            sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
           />
           <CardContent>
             <Typography
@@ -121,8 +122,10 @@ export default function ProductItem({ product }: ProductDetail) {
             >
               {product.title}
             </Typography>
-            <Typography>{product.caterogy}</Typography>
+            <Typography>{product.category}</Typography>
+            <Typography>{product.price}$</Typography>
           </CardContent>
+
           </CardActionArea>
           <Rating name="read-only" value={product.rating.rate} readOnly />
           <FavoriteBorderIcon
@@ -145,15 +148,16 @@ export default function ProductItem({ product }: ProductDetail) {
             <ShoppingCartOutlinedIcon sx={{ color: isInCart ? red[500] : "#474444" }}/>
           </IconButton>
           <Typography>Description</Typography>
+
         <ExpandMore
-            style={{}}
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
+          style={{}}
+          expand={expanded}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </ExpandMore>
         <Collapse
           style={{
             position: "absolute",
