@@ -48,7 +48,7 @@ function WishItem({ product, setOpen }: Prop) {
             <Typography gutterBottom variant="h5" component="div">
               {product.title}
             </Typography>
-            <Typography>{product.caterogy}</Typography>
+            <Typography>{product.category}</Typography>
             <Typography variant="body2" color="text.secondary">
               {product.description}
             </Typography>
