@@ -9,12 +9,14 @@ import { Box } from "@mui/material";
 
 import SearchBar from "../search/SearchBar";
 import SortForm from "../sort/SortForm";
+import Loading from "../loading/Loading";
 
 export default function ProductList() {
   const productList = useSelector(
     (state: RootState) => state.products.productList
   );
-
+  const loading = useSelector((state: RootState) => state.products.loading);
+  console.log(loading, "loading");
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -41,9 +43,13 @@ export default function ProductList() {
           flexWrap="wrap"
           style={{ width: "90%", marginInline: "auto", marginBottom: "100px" }}
         >
-          {productList.map((product) => (
-            <ProductItem key={product.id} product={product} />
-          ))}
+          {loading ? (
+            <Loading />
+          ) : (
+            productList.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))
+          )}
         </Box>
       </>
     );
