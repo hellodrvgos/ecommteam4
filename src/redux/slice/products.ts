@@ -40,7 +40,7 @@ const productSlice = createSlice({
         }
         return 0;
       });
-      console.log(sortTitle, "sortTitle");
+
       state.productList = sortTitle;
     },
     sortByPrice: (state) => {

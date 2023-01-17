@@ -171,7 +171,7 @@ export default function NavBar(props: Props) {
             sx={{
               position: "absolute",
               right: 0,
-              display: { xs: "none", sm: "block" },
+              display: { xs: "none", sm: "inline" },
             }}
           >
             <List
@@ -179,7 +179,6 @@ export default function NavBar(props: Props) {
                 width: "100%",
                 display: "flex",
                 flexDirection: "row",
-                marginRight: "30px",
               }}
             >
               <Link style={{ textDecoration: "none", color: "#f8f8f8" }} to="/">

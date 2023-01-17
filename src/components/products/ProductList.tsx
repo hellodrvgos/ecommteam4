@@ -16,7 +16,6 @@ export default function ProductList() {
     (state: RootState) => state.products.productList
   );
   const loading = useSelector((state: RootState) => state.products.loading);
-  console.log(loading, "loading");
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -34,15 +33,19 @@ export default function ProductList() {
   const showProductList = () => {
     return (
       <>
-        <div>
-          <SortForm />
-        </div>
-
         <Box
           display="flex"
           flexWrap="wrap"
-          style={{ width: "90%", marginInline: "auto", marginBottom: "100px" }}
+          style={{
+            width: "90%",
+            marginInline: "auto",
+            marginBottom: "100px",
+            height: "auto",
+          }}
         >
+          <Box style={{ width: "100%" }}>
+            <SortForm />
+          </Box>
           {loading ? (
             <Loading />
           ) : (

@@ -59,7 +59,7 @@ export default function SearchBar() {
       dispatch(searchActions.searchResults([]));
     }
   };
-  console.log(userInput, "SearchBar");
+ 
   return (
     <Search>
       <StyledInputBase
