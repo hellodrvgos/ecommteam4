@@ -9,7 +9,6 @@ import { Box } from "@mui/material";
 
 import SearchBar from "../search/SearchBar";
 
-
 export default function ProductList() {
   const productList = useSelector(
     (state: RootState) => state.products.productList
@@ -21,38 +20,39 @@ export default function ProductList() {
     dispatch(fetchProductData());
   }, [dispatch]);
 
+  const searchResultList = useSelector(
+    (state: RootState) => state.searchresults.searchResultList
+  );
 
-    const searchResultList =  useSelector((state: RootState) => state.searchresults.searchResultList);
+  useEffect(() => {
+    dispatch(fetchProductData());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(fetchProductData())
-    }, [dispatch]);
-
-    const showProductList = () => {
-        return (
-            productList.map((product) => (
-                <ProductItem key={product.id} product={product}/>
-            ))
-        )
-    }
-
-    const showSearchResultList = () => {
-        return (
-            searchResultList.map((product) => (
-                <ProductItem key={product.id} product={product}/>
-            ))
-        )
-    }
-
+  const showProductList = () => {
     return (
-            <div>
-                This is ProductList
-                <SearchBar/>
-                {
-                    searchResultList.length > 0 ?
-                    showSearchResultList() :
-                    showProductList()
-                }
-            </div>
-    )
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        style={{ width: "90%", marginInline: "auto" }}
+      >
+        {productList.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+      </Box>
+    );
+  };
+
+  const showSearchResultList = () => {
+    return searchResultList.map((product) => (
+      <ProductItem key={product.id} product={product} />
+    ));
+  };
+
+  return (
+    <div>
+      This is ProductList
+      <SearchBar />
+      {searchResultList.length > 0 ? showSearchResultList() : showProductList()}
+    </div>
+  );
 }
