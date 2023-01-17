@@ -21,10 +21,12 @@ const productSlice = createSlice({
       state.productList.push(action.payload);
     },
     removeWish: (state, action) => {
-      const result = state.productList.filter(
-        (product) => product.id !== action.payload
+      const result = state.productList.findIndex(
+        (product) => product.id === action.payload.id
       );
-      state.productList = result;
+      if (result !== -1) {
+        state.productList.splice(result, 1);
+      }
     },
   },
 });

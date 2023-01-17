@@ -23,9 +23,8 @@ function WishItem({ product, setOpen }: Prop) {
   const dispatch = useDispatch<AppDispatch>();
 
   const removeFav = () => {
-    const open = dispatch(productActions.removeWish(product));
+    dispatch(productActions.removeWish(product));
     setOpen(true);
-    console.log(open, "open");
   };
 
   return (
@@ -33,7 +32,7 @@ function WishItem({ product, setOpen }: Prop) {
       <Card
         sx={{
           width: 300,
-          height: 500,
+          height: "auto",
           marginInline: "1rem",
           marginBlock: "1rem",
         }}

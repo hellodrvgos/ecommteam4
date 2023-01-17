@@ -21,14 +21,21 @@ import { productActions } from "../../redux/slice/products";
 
 export default function ProductItem({ product }: ProductDetail) {
   const dispatch = useDispatch<AppDispatch>();
-  const favList = useSelector((state: RootState) => state.products.productList);
-  const isDuplicated = favList.some((favItem) => favItem.id === product.id);
-  const isFavorite = favList.some((element) => element.id === product.id);
+  const wishList = useSelector(
+    (state: RootState) => state.products.productList
+  );
+  const isDuplicated = wishList.some(
+    (wishItem) =>
+      wishItem.title.toLocaleLowerCase() === product.title.toLocaleLowerCase()
+  );
+  const isFavorite = wishList.some((element) => element.id === product.id);
 
   const [open, setOpen] = useState(false);
   const [add, setAdd] = useState(false);
 
-  const handleAdd = () => [setAdd(true)];
+  const handleAdd = () => {
+    setAdd(true);
+  };
   const handleClick = () => {
     setOpen(true);
   };
@@ -72,7 +79,7 @@ export default function ProductItem({ product }: ProductDetail) {
           </CardContent>
           <Box>{product.rating.rate}</Box>
           <FavoriteBorderIcon
-            aria-label="addFav"
+            aria-label="addWish"
             sx={{ color: isFavorite ? red[500] : "#474444" }}
             onClick={() => {
               isDuplicated
