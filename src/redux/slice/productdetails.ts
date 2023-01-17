@@ -3,10 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Product} from "../../types/type";
 
 type InitialState ={
-    productDetail: Product[],
+    productDetail: Product,
 }
 const initialState: InitialState = {
-    productDetail:[],
+    productDetail: {
+        id: 0,
+        title: "",
+        price: 0,
+        description: "",
+        caterogy:"" ,
+        image: "",
+        rating: {
+        rate: 0
+    }
+    },
 }
 const productDetailSlice = createSlice({
     name: "productDetail",

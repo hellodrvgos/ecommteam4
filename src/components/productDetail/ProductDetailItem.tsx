@@ -5,11 +5,11 @@ import {Product} from "../../types/type";
 type Prop ={
     item: Product
 }
-export default function CountryDetailItem({item}: Prop){
+export default function ProductDetailItem({item}: Prop){
     
       return (
         <div> 
-            <div className="image"><img src={item.image} width="100px" height="200px"/></div>
+            <div className="image"><img src={item.image} width="100px" height="150px"/></div>
             <div className="name-description">
                 <div>{item.title}</div>
                 <div>{item.price}</div>
