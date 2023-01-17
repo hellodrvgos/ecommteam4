@@ -16,7 +16,7 @@ export default function ProductDetail(){
     return (
         <div className="product-detail">
             {
-              <ProductDetailItem  item={productDetail}/>
+              <ProductDetailItem  product={productDetail}/>
              }
             
         </div>

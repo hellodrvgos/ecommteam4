@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { red } from "@mui/material/colors";
 import Snackbar from "@mui/material/Snackbar";
 import { AlertTitle } from "@mui/material";
@@ -19,12 +20,13 @@ import Alert from "@mui/material/Alert";
 
 import { AppDispatch, RootState } from "../../redux/store";
 
-import { ProductDetail } from "../../types/type";
+import { Product, ProductDetail } from "../../types/type";
 import "./ProductItem.css";
 import { Box } from "@mui/system";
 import { wishActions } from "../../redux/slice/wishList";
 
 import { Link } from "react-router-dom";
+import { cartActions } from "../../redux/slice/cartList";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -54,19 +56,32 @@ export default function ProductItem({ product }: ProductDetail) {
     (wishItem) =>
       wishItem.title.toLocaleLowerCase() === product.title.toLocaleLowerCase()
   );
-  console.log(isDuplicated, "isDuplicated");
+  //console.log(isDuplicated, "isDuplicated");
   const isFavorite = wishList.some((element) => element.id === product.id);
+  const updateProduct = {...product, quantity: 1}
+  const cartList = useSelector((state: RootState)=> state.cart.cartList);
+  const isInCart= cartList.some((item)=> 
+    item.id === product.id
+  );
+ 
+  const [openFavorite, setOpenFavorite] = useState(false);
+  const [addFavorite, setAddFavorite] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  const [addCart, setAddCart]= useState(false)
 
-  const [open, setOpen] = useState(false);
-  const [add, setAdd] = useState(false);
-
-  const handleAdd = () => {
-    setAdd(true);
+  
+  const handleClickFavorite = () => {
+    setOpenFavorite(true);
   };
-  const handleClick = () => {
-    setOpen(true);
+  const handleClickCart = () => {
+    setOpenCart(true);
+  }
+  const handleAddFavorite = () => {
+    setAddFavorite(true);
   };
-
+  const handleAddCart = ()=>{
+    setAddCart(true);
+  }
   const handleClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
@@ -74,8 +89,10 @@ export default function ProductItem({ product }: ProductDetail) {
     if (reason === "clickaway") {
       return;
     }
-    setOpen(false);
-    setAdd(false);
+    setOpenFavorite(false);
+    setAddFavorite(false);
+    setOpenCart(false);
+    setAddCart(false);
   };
 
   return (
@@ -113,12 +130,21 @@ export default function ProductItem({ product }: ProductDetail) {
             sx={{ color: isFavorite ? red[500] : "#474444" }}
             onClick={() => {
               isDuplicated
-                ? handleClick()
-                : dispatch(wishActions.addFav(product)) && handleAdd();
+                ? handleClickFavorite()
+                : dispatch(wishActions.addFav(product)) && handleAddFavorite();
             }}
           />
+          <IconButton
+            aria-label="addCart"
+            onClick={() => {
+              isInCart
+                ? handleClickCart()
+                : dispatch(cartActions.addToCart(updateProduct)) && handleAddCart();
+            }}
+          >
+            <ShoppingCartOutlinedIcon sx={{ color: isInCart ? red[500] : "#474444" }}/>
+          </IconButton>
           <Typography>Description</Typography>
-
         <ExpandMore
             style={{}}
             expand={expanded}
@@ -144,16 +170,28 @@ export default function ProductItem({ product }: ProductDetail) {
           <Typography> {product.description}</Typography>
         </Collapse>
       </Card>
-      <Snackbar open={add} autoHideDuration={1000} onClose={handleClose}>
+      <Snackbar open={addFavorite} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
           <AlertTitle>Success</AlertTitle>
-          Item added to favorites
+          Item added to favorites!!
         </Alert>
       </Snackbar>
 
-      <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
+      <Snackbar open={openFavorite} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          The country is already inside favorite list!
+          The product is already inside favorite list!
+        </Alert>
+      </Snackbar>
+      <Snackbar open={addCart} autoHideDuration={1000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          <AlertTitle>Success</AlertTitle>
+          Item added to your cart!!
+        </Alert>
+      </Snackbar>
+
+      <Snackbar open={openCart} autoHideDuration={1000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          The product is already in your cart!!
         </Alert>
       </Snackbar>
     </Box>

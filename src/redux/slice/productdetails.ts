@@ -14,9 +14,10 @@ const initialState: InitialState = {
         caterogy:"" ,
         image: "",
         rating: {
-        rate: 0
+            rate: 0,
+        },
+        quantity: 0,
     }
-    },
 }
 const productDetailSlice = createSlice({
     name: "productDetail",

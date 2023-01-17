@@ -1,10 +1,10 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 
 import productReducer from "./slice/products";
-
 import searchReducer from "./slice/search";
 import detailReducer from "./slice/productdetails";
 import wishReducer from "./slice/wishList";
+import cartReducer from "./slice/cartList";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +12,7 @@ const store = configureStore({
     searchresults: searchReducer,
     productDetail: detailReducer,
     wish: wishReducer,
+    cart: cartReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

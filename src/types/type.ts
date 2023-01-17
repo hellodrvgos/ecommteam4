@@ -8,6 +8,7 @@ export type Product = {
     rating: {
         rate: number;
     }
+    quantity: number;
 }
 
 export type ProductDetail = {
