@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
+import Rating from "@mui/material/Rating";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
@@ -95,16 +96,17 @@ export default function ProductItem({ product }: ProductDetail) {
           />
           <CardContent>
             <Typography
-              style={{ height: 150 }}
+              style={{ height: 160 }}
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="div"
             >
               {product.title}
             </Typography>
             <Typography>{product.caterogy}</Typography>
           </CardContent>
-          <Box>{product.rating.rate}</Box>
+          <Rating name="read-only" value={product.rating.rate} readOnly />
+
           <FavoriteBorderIcon
             aria-label="addWish"
             sx={{ color: isFavorite ? red[500] : "#474444" }}
@@ -114,6 +116,7 @@ export default function ProductItem({ product }: ProductDetail) {
                 : dispatch(wishActions.addFav(product)) && handleAdd();
             }}
           />
+          <Typography>Description</Typography>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
