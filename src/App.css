@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+/* Home */
+.home {
+  height: 500px;
+  background-image: url(./assets/backgroundImage.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub_home {
+  margin-top: 70px;
+}
+
+.clothes_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+.clothes_img {
+  clip-path: circle(50%)
+}
