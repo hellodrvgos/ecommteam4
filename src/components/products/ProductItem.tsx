@@ -22,7 +22,6 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { ProductDetail } from "../../types/type";
 import "./ProductItem.css";
 import { Box } from "@mui/system";
-// import { productActions } from "../../redux/slice/products";
 import { wishActions } from "../../redux/slice/wishList";
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -118,6 +117,7 @@ export default function ProductItem({ product }: ProductDetail) {
           />
           <Typography>Description</Typography>
           <ExpandMore
+            style={{}}
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
@@ -126,7 +126,19 @@ export default function ProductItem({ product }: ProductDetail) {
             <ExpandMoreIcon />
           </ExpandMore>
         </CardActionArea>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Collapse
+          style={{
+            position: "absolute",
+            width: 300,
+            height: "auto",
+            zIndex: 1,
+            backgroundColor: "#e9e6e6",
+            paddingBottom: "100px",
+          }}
+          in={expanded}
+          timeout="auto"
+          unmountOnExit
+        >
           <Typography> {product.description}</Typography>
         </Collapse>
       </Card>
