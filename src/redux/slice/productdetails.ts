@@ -6,18 +6,21 @@ type InitialState = {
   productDetail: Product;
 };
 const initialState: InitialState = {
-  productDetail: {
-    id: 0,
-    title: "",
-    price: 0,
-    description: "",
-    category: "",
-    image: "",
-    rating: {
-      rate: 0,
-    },
-  },
-};
+
+    productDetail: {
+        id: 0,
+        title: "",
+        price: 0,
+        description: "",
+        category:"" ,
+        image: "",
+        rating: {
+            rate: 0,
+        },
+        quantity: 0,
+    }
+}
+
 const productDetailSlice = createSlice({
   name: "productDetail",
   initialState,
