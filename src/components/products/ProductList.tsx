@@ -50,7 +50,6 @@ export default function ProductList() {
 
   return (
     <div>
-      This is ProductList
       <SearchBar />
       {searchResultList.length > 0 ? showSearchResultList() : showProductList()}
     </div>
