@@ -1,7 +1,9 @@
+import WishList from "../components/wishlist/WishList";
+
 export default function MyWishList() {
-    return (
-        <div>
-            This is MyWishList
-        </div>
-    )
+  return (
+    <div>
+      <WishList />
+    </div>
+  );
 }
