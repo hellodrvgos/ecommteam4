@@ -94,6 +94,7 @@ export default function ProductItem({ product }: ProductDetail) {
             height="140"
             image={product.image}
             alt="green iguana"
+            sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
           />
           <CardContent>
             <Typography
@@ -104,31 +105,31 @@ export default function ProductItem({ product }: ProductDetail) {
             >
               {product.title}
             </Typography>
-            <Typography>{product.caterogy}</Typography>
+            <Typography>{product.category}</Typography>
             <Typography>{product.price}$</Typography>
           </CardContent>
-          </CardActionArea>
-          <Rating name="read-only" value={product.rating.rate} readOnly />
-          <FavoriteBorderIcon
-            aria-label="addWish"
-            sx={{ color: isFavorite ? red[500] : "#474444" }}
-            onClick={() => {
-              isDuplicated
-                ? handleClick()
-                : dispatch(wishActions.addFav(product)) && handleAdd();
-            }}
-          />
-          <Typography>Description</Typography>
+        </CardActionArea>
+        <Rating name="read-only" value={product.rating.rate} readOnly />
+        <FavoriteBorderIcon
+          aria-label="addWish"
+          sx={{ color: isFavorite ? red[500] : "#474444" }}
+          onClick={() => {
+            isDuplicated
+              ? handleClick()
+              : dispatch(wishActions.addFav(product)) && handleAdd();
+          }}
+        />
+        <Typography>Description</Typography>
 
         <ExpandMore
-            style={{}}
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
+          style={{}}
+          expand={expanded}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </ExpandMore>
         <Collapse
           style={{
             position: "absolute",

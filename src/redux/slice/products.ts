@@ -55,10 +55,10 @@ const productSlice = createSlice({
     },
     sortByCategory: (state) => {
       const sortCategory = state.productList.sort(function (a, b) {
-        if (a.caterogy > b.caterogy) {
+        if (a.category > b.category) {
           return 1;
         }
-        if (a.caterogy < b.caterogy) {
+        if (a.category < b.category) {
           return -1;
         }
         return 0;
