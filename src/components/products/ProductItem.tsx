@@ -24,6 +24,8 @@ import "./ProductItem.css";
 import { Box } from "@mui/system";
 import { wishActions } from "../../redux/slice/wishList";
 
+import { Link } from "react-router-dom";
+
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
@@ -86,7 +88,7 @@ export default function ProductItem({ product }: ProductDetail) {
           marginBlock: "1rem",
         }}
       >
-        <CardActionArea>
+        <CardActionArea component={Link} to={`/products/${product.id}`}>
           <CardMedia
             component="img"
             height="140"
@@ -104,8 +106,8 @@ export default function ProductItem({ product }: ProductDetail) {
             </Typography>
             <Typography>{product.caterogy}</Typography>
           </CardContent>
+          </CardActionArea>
           <Rating name="read-only" value={product.rating.rate} readOnly />
-
           <FavoriteBorderIcon
             aria-label="addWish"
             sx={{ color: isFavorite ? red[500] : "#474444" }}
@@ -116,7 +118,8 @@ export default function ProductItem({ product }: ProductDetail) {
             }}
           />
           <Typography>Description</Typography>
-          <ExpandMore
+
+        <ExpandMore
             style={{}}
             expand={expanded}
             onClick={handleExpandClick}
@@ -125,7 +128,6 @@ export default function ProductItem({ product }: ProductDetail) {
           >
             <ExpandMoreIcon />
           </ExpandMore>
-        </CardActionArea>
         <Collapse
           style={{
             position: "absolute",

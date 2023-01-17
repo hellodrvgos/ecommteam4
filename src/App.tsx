@@ -13,11 +13,43 @@ import Products from "./pages/Products";
 import ProductList from './components/products/ProductList';
 import Footer from "./components/footer/Footer";
 import ProductDetail from "./components/productDetail/ProductDetail"
-function App() {
-  return (
 
+import { createTheme, ThemeProvider } from "@mui/material";
+
+import { useState } from "react";
+
+const light = createTheme({
+  palette: {
+    mode: "light",
+  },
+  typography: {
+        fontFamily: ["Nunito", "sans-serif"].join(","),
+        fontSize: 16,
+  }
+})
+
+const dark = createTheme({
+  palette: {
+    mode: "dark",
+  },
+  typography: {
+        fontFamily: ["Nunito", "sans-serif"].join(","),
+        fontSize: 16,
+  }
+})
+
+function App() {
+
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
+
+  const changeTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
+
+  return (
+    <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
     <Box className="App">
-      <NavBar />
+      <NavBar changeTheme={changeTheme}/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/shoppingCart" element={<Cart />}></Route>
@@ -27,6 +59,7 @@ function App() {
       </Routes>
       <Footer/>
     </Box>
+    </ThemeProvider>
 
   );
 }
