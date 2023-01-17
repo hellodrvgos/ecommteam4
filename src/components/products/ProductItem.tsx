@@ -54,7 +54,7 @@ export default function ProductItem({ product }: ProductDetail) {
     (wishItem) =>
       wishItem.title.toLocaleLowerCase() === product.title.toLocaleLowerCase()
   );
-  console.log(isDuplicated, "isDuplicated");
+
   const isFavorite = wishList.some((element) => element.id === product.id);
 
   const [open, setOpen] = useState(false);
@@ -105,6 +105,7 @@ export default function ProductItem({ product }: ProductDetail) {
               {product.title}
             </Typography>
             <Typography>{product.caterogy}</Typography>
+            <Typography>{product.price}$</Typography>
           </CardContent>
           </CardActionArea>
           <Rating name="read-only" value={product.rating.rate} readOnly />
