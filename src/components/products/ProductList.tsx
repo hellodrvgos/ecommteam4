@@ -33,7 +33,7 @@ export default function ProductList() {
       <Box
         display="flex"
         flexWrap="wrap"
-        style={{ width: "90%", marginInline: "auto" }}
+        style={{ width: "90%", marginInline: "auto", marginBlock: "50px" }}
       >
         {productList.map((product) => (
           <ProductItem key={product.id} product={product} />
@@ -50,7 +50,6 @@ export default function ProductList() {
 
   return (
     <div>
-      This is ProductList
       <SearchBar />
       {searchResultList.length > 0 ? showSearchResultList() : showProductList()}
     </div>
