@@ -37,7 +37,7 @@ const dark = createTheme({
     fontSize: 16,
   },
 });
-
+// localStorage.clear();
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
 

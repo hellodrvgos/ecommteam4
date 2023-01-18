@@ -5,6 +5,7 @@ import { useSelector} from "react-redux"
 import { RootState } from "../../redux/store"
 import CartItem from "./CartItem"
 import { Link } from "react-router-dom";
+import { Product } from "../../types/type";
 
 export default function CartList() {
         const cartList = useSelector((state: RootState) => state.cart.cartList)
