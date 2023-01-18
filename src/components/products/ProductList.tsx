@@ -10,6 +10,7 @@ import { Box } from "@mui/material";
 import SearchBar from "../search/SearchBar";
 import SortForm from "../sort/SortForm";
 import Loading from "../loading/Loading";
+import { productActions } from "../../redux/slice/products";
 
 export default function ProductList() {
   const productList = useSelector(
@@ -17,18 +18,19 @@ export default function ProductList() {
   );
   const loading = useSelector((state: RootState) => state.products.loading);
   const dispatch = useDispatch<AppDispatch>();
+  const dispatchLoading = useDispatch();
 
   useEffect(() => {
+    dispatchLoading(productActions.toggleLoading(true));
     dispatch(fetchProductData());
-  }, [dispatch]);
+    setTimeout(() => {
+      dispatchLoading(productActions.toggleLoading(false));
+    }, 2000);
+  }, [dispatch, dispatchLoading]);
 
   const searchResultList = useSelector(
     (state: RootState) => state.searchresults.searchResultList
   );
-
-  useEffect(() => {
-    dispatch(fetchProductData());
-  }, [dispatch]);
 
   const showProductList = () => {
     return (
@@ -47,7 +49,9 @@ export default function ProductList() {
             <SortForm />
           </Box>
           {loading ? (
-            <Loading />
+            <Box style={{ position: "absolute", top: "50%", left: "50%" }}>
+              <Loading />
+            </Box>
           ) : (
             productList.map((product) => (
               <ProductItem key={product.id} product={product} />

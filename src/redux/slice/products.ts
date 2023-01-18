@@ -19,6 +19,9 @@ const productSlice = createSlice({
     getProductData: (state, action) => {
       state.productList = action.payload;
     },
+    toggleLoading: (state, action) => {
+      state.loading = action.payload;
+    },
     addWish: (state, action: PayloadAction<Product>) => {
       state.productList.push(action.payload);
     },
