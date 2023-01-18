@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import InputLabel from "@mui/material/InputLabel";
@@ -10,10 +10,15 @@ import { AppDispatch } from "../../redux/store";
 import { fetchProductData } from "../../redux/thunk/products";
 
 function SortForm() {
+  const [click, setClick] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(fetchProductData());
   }, [dispatch]);
+
+  const handleClose = () => {
+    setClick(true);
+  };
 
   return (
     <div>
@@ -21,17 +26,31 @@ function SortForm() {
         <InputLabel id="demo-simple-select-standard-label">
           Filter by
         </InputLabel>
-        <Select labelId="demo-simple-select-helper-label" label="Age">
-          {/* <MenuItem value="">
-            <em>None</em>
-          </MenuItem> */}
-          <MenuItem onClick={() => dispatch(productActions.sortByTitle())}>
+        <Select
+          value={click}
+          onClick={handleClose}
+          labelId="demo-simple-select-helper-label"
+          label="Age"
+        >
+          <MenuItem
+            onClick={() =>
+              dispatch(productActions.sortByTitle()) && handleClose()
+            }
+          >
             Title
           </MenuItem>
-          <MenuItem onClick={() => dispatch(productActions.sortByPrice())}>
+          <MenuItem
+            onClick={() =>
+              dispatch(productActions.sortByPrice()) && handleClose()
+            }
+          >
             Price
           </MenuItem>
-          <MenuItem onClick={() => dispatch(productActions.sortByCategory())}>
+          <MenuItem
+            onClick={() =>
+              dispatch(productActions.sortByCategory()) && handleClose()
+            }
+          >
             Category
           </MenuItem>
         </Select>

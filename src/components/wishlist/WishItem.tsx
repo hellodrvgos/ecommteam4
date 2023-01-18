@@ -7,7 +7,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import {  Rating } from "@mui/material";
+import { Rating } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 
 import { useDispatch } from "react-redux";

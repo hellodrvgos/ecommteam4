@@ -9,12 +9,13 @@ import { Box } from "@mui/material";
 
 import SearchBar from "../search/SearchBar";
 import SortForm from "../sort/SortForm";
+import Loading from "../loading/Loading";
 
 export default function ProductList() {
   const productList = useSelector(
     (state: RootState) => state.products.productList
   );
-
+  const loading = useSelector((state: RootState) => state.products.loading);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -32,18 +33,26 @@ export default function ProductList() {
   const showProductList = () => {
     return (
       <>
-        <div>
-          <SortForm />
-        </div>
-
         <Box
           display="flex"
           flexWrap="wrap"
-          style={{ width: "90%", marginInline: "auto", marginBottom: "100px" }}
+          style={{
+            width: "90%",
+            marginInline: "auto",
+            marginBottom: "100px",
+            height: "auto",
+          }}
         >
-          {productList.map((product) => (
-            <ProductItem key={product.id} product={product} />
-          ))}
+          <Box style={{ width: "100%" }}>
+            <SortForm />
+          </Box>
+          {loading ? (
+            <Loading />
+          ) : (
+            productList.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))
+          )}
         </Box>
       </>
     );

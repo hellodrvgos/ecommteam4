@@ -4,10 +4,12 @@ import { Product } from "../../types/type";
 
 type InitialState = {
   productList: Product[];
+  loading: boolean;
 };
 
 const initialState: InitialState = {
   productList: [],
+  loading: false,
 };
 
 const productSlice = createSlice({
@@ -38,7 +40,7 @@ const productSlice = createSlice({
         }
         return 0;
       });
-      console.log(sortTitle, "sortTitle");
+
       state.productList = sortTitle;
     },
     sortByPrice: (state) => {
