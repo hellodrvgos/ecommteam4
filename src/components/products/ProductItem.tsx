@@ -61,7 +61,7 @@ export default function ProductItem({ product }: ProductDetail) {
   const [add, setAdd] = useState(false);
 
   const handleAdd = () => {
-    localStorage.setAdd(true);
+    setAdd(true);
   };
   const handleClick = () => {
     setOpen(true);
