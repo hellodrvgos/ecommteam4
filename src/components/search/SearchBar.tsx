@@ -59,9 +59,9 @@ export default function SearchBar() {
       dispatch(searchActions.searchResults([]));
     }
   };
- 
+
   return (
-    <Search>
+    <Search style={{ paddingTop: "50px", color: "grey" }}>
       <StyledInputBase
         placeholder="Search by Product Name"
         inputProps={{ "aria-label": "search" }}

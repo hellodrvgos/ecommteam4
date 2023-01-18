@@ -71,7 +71,6 @@ export default function Home() {
           width="150px"
           src={backpack}
           alt="backpack"
-          style={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
         />
         <img
           className="clothes_img"
@@ -79,7 +78,6 @@ export default function Home() {
           width="150px"
           src={jacket}
           alt="jacket"
-          style={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
         />
         <img
           className="clothes_img"
@@ -87,7 +85,6 @@ export default function Home() {
           width="150px"
           src={wristband}
           alt="wristband"
-          style={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
         />
         <img
           className="clothes_img"
@@ -95,7 +92,6 @@ export default function Home() {
           width="150px"
           src={ring}
           alt="ring"
-          style={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
         />
         <img
           className="clothes_img"
@@ -103,7 +99,6 @@ export default function Home() {
           width="150px"
           src={drive}
           alt="drive"
-          style={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
         />
       </Box>
     </Box>

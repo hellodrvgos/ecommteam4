@@ -26,7 +26,7 @@ const light = createTheme({
     },
 
     text: {
-      primary: "#f7f9fb",
+      primary: "#3e3f40",
     },
   },
   typography: {
@@ -40,7 +40,10 @@ const dark = createTheme({
     mode: "dark",
 
     background: {
-      default: "gray",
+      default: "#ededef",
+    },
+    text: {
+      primary: "#e1e4e7",
     },
   },
   typography: {
