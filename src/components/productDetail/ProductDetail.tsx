@@ -15,10 +15,7 @@ export default function ProductDetail(){
     }, [dispatch, productId])
     return (
         <div className="product-detail">
-            {
               <ProductDetailItem  product={productDetail}/>
-             }
-            
         </div>
     );
 }

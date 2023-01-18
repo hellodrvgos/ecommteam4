@@ -5,6 +5,7 @@ import searchReducer from "./slice/search";
 import detailReducer from "./slice/productdetails";
 import wishReducer from "./slice/wishList";
 import cartReducer from "./slice/cartList";
+import relatedProductsReducer from "./slice/relatedProducts"
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     productDetail: detailReducer,
     wish: wishReducer,
     cart: cartReducer,
+    relatedProducts: relatedProductsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
