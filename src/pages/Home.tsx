@@ -10,6 +10,7 @@ import backgroundImg from "../assets/legs.jpg";
 import "../App.css";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import ProductsRating from "../components/products/ProductsRating";
 
 const styles = {
   background: {
@@ -64,7 +65,11 @@ export default function Home() {
         <h2>Meet the essentials</h2>
         {/* <p>We offer a variety of products for every style</p> */}
       </Box>
-      <Box className="clothes_card">
+      <Box style={{ marginBottom: "50px" }}>
+        <ProductsRating />
+      </Box>
+
+      {/* <Box className="clothes_card">
         <img
           className="clothes_img"
           height="150px"
@@ -100,7 +105,7 @@ export default function Home() {
           src={drive}
           alt="drive"
         />
-      </Box>
+      </Box> */}
     </Box>
   );
 }
