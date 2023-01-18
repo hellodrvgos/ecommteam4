@@ -1,63 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* Home */
-.home {
+/* .home {
+  width: 100%;
   height: 500px;
   background-image: url(./assets/backgroundImage.jpg);
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .sub_home {
-  margin-top: 70px;
+  margin-block: 50px;
+  color: #213a45;
+}
+.title-box {
+  border: 5px solid rgb(243, 239, 239);
+  position: relative;
+  background-color: rgb(135, 143, 143, 0.5);
+}
+.title-home {
+  font-family: "Sacramento", cursive;
+  text-transform: capitalize;
+  font-size: 3rem;
+  font-weight: 900;
+  position: absolute;
+  top: -1.5rem;
+  left: 30px;
+  margin-bottom: -2rem;
+  letter-spacing: 8px;
+}
+.subTitle {
+  position: absolute;
+  top: 1rem;
+  left: 30px;
+  font-size: 3rem;
+  font-weight: 900;
 }
 
+.box-btn {
+  background-color: rgb(135, 143, 143, 0.5);
+  border: 2px solid rgb(243, 239, 239);
+  border-radius: 2px;
+}
+.box-btn:hover {
+  background-color: rgb(94, 134, 156, 0.3);
+  border: 2px solid rgb(135, 143, 143, 0.5);
+}
+.link-style {
+  color: #fdfeff;
+}
+.link-style:hover {
+  color: #3d6374;
+}
 .clothes_card {
+  height: fit-content;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .clothes_img {
-  clip-path: circle(50%)
+  clip-path: circle(50%);
 }

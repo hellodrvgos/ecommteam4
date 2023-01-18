@@ -42,7 +42,6 @@ export default function ProductList() {
             width: "90%",
             marginInline: "auto",
             marginBottom: "100px",
-            height: "auto",
           }}
         >
           <Box style={{ width: "100%" }}>
@@ -69,10 +68,10 @@ export default function ProductList() {
   };
 
   return (
-    <div>
+    <Box style={{ color: "grey" }}>
       <SearchBar />
 
       {searchResultList.length > 0 ? showSearchResultList() : showProductList()}
-    </div>
+    </Box>
   );
 }

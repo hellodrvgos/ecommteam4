@@ -21,6 +21,13 @@ import { useState } from "react";
 const light = createTheme({
   palette: {
     mode: "light",
+    primary: {
+      main: "#5f869b",
+    },
+
+    text: {
+      primary: "#3e3f40",
+    },
   },
   typography: {
     fontFamily: ["Nunito", "sans-serif"].join(","),
@@ -31,6 +38,13 @@ const light = createTheme({
 const dark = createTheme({
   palette: {
     mode: "dark",
+
+    background: {
+      default: "#ededef",
+    },
+    text: {
+      primary: "#e1e4e7",
+    },
   },
   typography: {
     fontFamily: ["Nunito", "sans-serif"].join(","),
