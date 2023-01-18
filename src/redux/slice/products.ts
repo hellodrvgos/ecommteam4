@@ -18,6 +18,7 @@ const productSlice = createSlice({
   reducers: {
     getProductData: (state, action) => {
       state.productList = action.payload;
+      console.log(state.productList, "state.productList");
     },
     toggleLoading: (state, action) => {
       state.loading = action.payload;
