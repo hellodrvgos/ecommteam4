@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { productActions } from "../../redux/slice/products";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -34,6 +31,7 @@ function SortForm() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        style={{ color: "grey", textTransform: "capitalize" }}
       >
         Filter by
       </Button>
@@ -47,6 +45,7 @@ function SortForm() {
         }}
       >
         <MenuItem
+          style={{ color: "grey" }}
           onClick={() => {
             dispatch(productActions.sortByTitle());
             handleClose();
@@ -55,6 +54,7 @@ function SortForm() {
           Title
         </MenuItem>
         <MenuItem
+          style={{ color: "grey" }}
           onClick={() => {
             dispatch(productActions.sortByPrice());
             handleClose();
@@ -63,6 +63,7 @@ function SortForm() {
           Price
         </MenuItem>
         <MenuItem
+          style={{ color: "grey" }}
           onClick={() => {
             dispatch(productActions.sortByCategory());
             handleClose();
