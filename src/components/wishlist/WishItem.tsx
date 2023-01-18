@@ -1,22 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import { styled } from "@mui/material/styles";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Collapse from "@mui/material/Collapse";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Rating } from "@mui/material";
+import { Alert, AlertTitle, Rating, Snackbar } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
-
-import { useDispatch } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-import { AppDispatch } from "../../redux/store";
-import { Product } from "../../types/type";
 import { Box } from "@mui/system";
+import { red } from "@mui/material/colors";
+import { useDispatch, useSelector } from "react-redux";
+
+import { AppDispatch, RootState } from "../../redux/store";
+import { Product } from "../../types/type";
 import { wishActions } from "../../redux/slice/wishList";
+import { cartActions } from "../../redux/slice/cartList";
 
 type Prop = {
   product: Product;
@@ -26,7 +28,6 @@ type Prop = {
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
-
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -40,18 +41,38 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 function WishItem({ product, setOpen }: Prop) {
   const dispatch = useDispatch<AppDispatch>();
-
   const removeFav = () => {
     dispatch(wishActions.removeFav(product.id));
     setOpen(true);
   };
-
-  // expanded mode
-  const [expanded, setExpanded] = React.useState(false);
-
+  const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const cartList = useSelector((state: RootState)=> state.cart.cartList);
+  const updateProduct = {...product, quantity: 1}
+  const isInCart= cartList.some((item)=> 
+      item.id === product.id
+    );
+  const [openCart, setOpenCart] = useState(false);
+  const [addCart, setAddCart]= useState(false)
+  const handleClickCart = () => {
+        setOpenCart(true);
+    }
+  const handleAddCart = ()=>{
+        setAddCart(true);
+    }
+  const handleClose = (
+        event?: React.SyntheticEvent | Event,
+        reason?: string
+    ) => {
+  if (reason === "clickaway") {
+      return;
+    }
+        setOpenCart(false);
+        setAddCart(false);
+    };
   return (
     <Box style={{ margin: "auto" }}>
       <Card
@@ -83,6 +104,18 @@ function WishItem({ product, setOpen }: Prop) {
 
         <Rating name="read-only" value={product.rating.rate} readOnly />
         <CardActions>
+          <IconButton
+              aria-label="addToCart"
+              onClick={() => {
+                isInCart
+                  ? handleClickCart()
+                  : dispatch(cartActions.addToCart(updateProduct)) && handleAddCart();
+              }}
+            >
+              <ShoppingCartOutlinedIcon sx={{ color: isInCart ? red[500] : "#474444" }}/>
+          </IconButton>
+        </CardActions>
+        <CardActions>
           <DeleteIcon
             color="action"
             aria-label="removeFav"
@@ -103,6 +136,17 @@ function WishItem({ product, setOpen }: Prop) {
           <Typography> {product.description}</Typography>
         </Collapse>
       </Card>
+      <Snackbar open={addCart} autoHideDuration={2000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+              <AlertTitle>Success</AlertTitle>
+                Item added to your cart!!
+          </Alert>
+      </Snackbar>
+      <Snackbar open={openCart} autoHideDuration={2000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+                The product is already in your cart!!
+          </Alert>
+      </Snackbar>
     </Box>
   );
 }

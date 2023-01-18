@@ -46,10 +46,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 export default function ProductItem({ product }: ProductDetail) {
   let localStorageWishList: Product[] = JSON.parse(localStorage.getItem("favoriteList") || "null");
   if(localStorageWishList == null) localStorageWishList = [];
-
-  // expanded mode
   const [expanded, setExpanded] = React.useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -59,20 +56,17 @@ export default function ProductItem({ product }: ProductDetail) {
     (wishItem) =>
       wishItem.title.toLocaleLowerCase() === product.title.toLocaleLowerCase()
   );
-
   const isFavorite = localStorageWishList.some((element) => element.id === product.id);
+
   const updateProduct = {...product, quantity: 1}
   const cartList = useSelector((state: RootState)=> state.cart.cartList);
   const isInCart= cartList.some((item)=> 
     item.id === product.id
   );
- 
   const [openFavorite, setOpenFavorite] = useState(false);
   const [addFavorite, setAddFavorite] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [addCart, setAddCart]= useState(false)
-
-  
   const handleClickFavorite = () => {
     setOpenFavorite(true);
   };
@@ -97,7 +91,6 @@ export default function ProductItem({ product }: ProductDetail) {
     setOpenCart(false);
     setAddCart(false);
   };
-
   return (
     <Box style={{ margin: "auto" }}>
       <Card
@@ -151,7 +144,6 @@ export default function ProductItem({ product }: ProductDetail) {
             <ShoppingCartOutlinedIcon sx={{ color: isInCart ? red[500] : "#474444" }}/>
           </IconButton>
           <Typography>Description</Typography>
-
         <ExpandMore
           style={{}}
           expand={expanded}
