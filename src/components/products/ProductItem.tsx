@@ -44,6 +44,9 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 export default function ProductItem({ product }: ProductDetail) {
+  let localStorageWishList: Product[] = JSON.parse(localStorage.getItem("favoriteList") || "null");
+  if(localStorageWishList == null) localStorageWishList = [];
+
   // expanded mode
   const [expanded, setExpanded] = React.useState(false);
 
@@ -52,12 +55,12 @@ export default function ProductItem({ product }: ProductDetail) {
   };
   const dispatch = useDispatch<AppDispatch>();
   const wishList = useSelector((state: RootState) => state.wish.wishList);
-  const isDuplicated = wishList.some(
+  const isDuplicated = localStorageWishList.some(
     (wishItem) =>
       wishItem.title.toLocaleLowerCase() === product.title.toLocaleLowerCase()
   );
 
-  const isFavorite = wishList.some((element) => element.id === product.id);
+  const isFavorite = localStorageWishList.some((element) => element.id === product.id);
   const updateProduct = {...product, quantity: 1}
   const cartList = useSelector((state: RootState)=> state.cart.cartList);
   const isInCart= cartList.some((item)=> 

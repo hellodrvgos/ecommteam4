@@ -12,8 +12,13 @@ import { RootState } from "../../redux/store";
 import { Box } from "@mui/system";
 import WishItem from "./WishItem";
 
+import { Product } from "../../types/type";
+
 export default function WishList() {
-  const wishList = useSelector((state: RootState) => state.wish.wishList);
+  let localStorageWishList: Product[] = JSON.parse(localStorage.getItem("favoriteList") || "null");
+  if(localStorageWishList == null) localStorageWishList = [];
+  
+  // const wishList = useSelector((state: RootState) => state.wish.wishList);
   const [open, setOpen] = useState(false);
 
   const handleClose = (
@@ -49,7 +54,7 @@ export default function WishList() {
             <ArrowBackIosIcon />
           </IconButton>
         </Box>
-        {wishList.map((item) => (
+        {localStorageWishList.map((item) => (
           <WishItem setOpen={setOpen} key={item.id} product={item} />
         ))}
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>

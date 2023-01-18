@@ -18,7 +18,7 @@ export default function CartItem({product}: ProductDetail) {
             </Box>
             <Box className="icons">
                 <IconButton 
-                    aria-label="ncreaseQuantity"
+                    aria-label="increaseQuantity"
                     onClick={() => {
                       dispatch(cartActions.increaseQuantity(product.id))
                     }}
