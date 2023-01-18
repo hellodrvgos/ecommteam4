@@ -8,7 +8,8 @@ import drive from "../assets/drive.jpg";
 import backgroundImg from "../assets/legs.jpg";
 import { fetchProductData } from "../redux/thunk/products";
 import { RootState, AppDispatch } from "../redux/store";
-import Carousel from "react-material-ui-carousel";
+// import Carousel from "react-material-ui-carousel";
+import Carousel from "react-multi-carousel";
 
 import "../App.css";
 import { Box, Card, Grid, Typography } from "@mui/material";
@@ -16,6 +17,25 @@ import { Link } from "react-router-dom";
 
 import CarouselProduct from "../components/products/CarouselProduct";
 
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 const styles = {
   background: {
     backgroundImage: `url(${backgroundImg})`,
@@ -85,10 +105,10 @@ export default function Home() {
           width: "90%",
           margin: "auto",
           border: "1px solid black",
-          display: "inline-flex",
+          // display: "inline-flex",
         }}
       >
-        <Carousel>
+        <Carousel responsive={responsive}>
           {productCarousel.map((product) => (
             <CarouselProduct key={product.id} product={product} />
           ))}
