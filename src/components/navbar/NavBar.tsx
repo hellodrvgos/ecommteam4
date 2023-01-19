@@ -20,6 +20,8 @@ import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { CardMedia } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import { RootState, AppDispatch } from "../../redux/store";
+import { useSelector, useDispatch } from "react-redux";
 
 interface Props {
   window?: () => Window;
@@ -80,6 +82,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function NavBar(props: Props) {
+  const cartList = useSelector((state: RootState) => state.cart.cartList);
+  const wishList = useSelector((state: RootState) => state.wish.wishList);
   const { window } = props;
   const changeTheme = props.changeTheme;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -218,7 +222,9 @@ export default function NavBar(props: Props) {
                           fontSize: "10px",
                           color: "#fafafa",
                         }}
-                      ></Box>
+                      >
+                        {wishList.length > 0 ? wishList.length : null}
+                      </Box>
                     </ListItemText>
                   </ListItemButton>
                 </ListItem>
@@ -229,7 +235,21 @@ export default function NavBar(props: Props) {
               >
                 <ListItem disablePadding>
                   <ListItemButton sx={{ textAlign: "center" }}>
-                    <ListItemText>SHOPPING CART</ListItemText>
+                    <ListItemText>
+                      SHOPPING CART
+                      <Box
+                        component="span"
+                        sx={{
+                          p: 1,
+                          position: "absolute",
+                          top: "0",
+                          fontSize: "10px",
+                          color: "#fafafa",
+                        }}
+                      >
+                        {cartList.length > 0 ? cartList.length : null}
+                      </Box>
+                    </ListItemText>
                   </ListItemButton>
                 </ListItem>
               </Link>
