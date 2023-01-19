@@ -55,7 +55,7 @@ export default function Footer() {
             </div>
 
             <Typography variant="caption" color="#5f869b">
-              Copyright &copy; 2023.
+              &copy; Integri4 - 2023
             </Typography>
           </Box>
         </Container>
