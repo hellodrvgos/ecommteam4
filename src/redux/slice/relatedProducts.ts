@@ -18,6 +18,7 @@ const relatedProductsSlice = createSlice({
     },
   },
 });
+
 export const relatedProductsActions = relatedProductsSlice.actions;
 const relatedProductsReducer = relatedProductsSlice.reducer;
 export default relatedProductsReducer;

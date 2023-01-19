@@ -43,7 +43,6 @@ const productSlice = createSlice({
         }
         return 0;
       });
-
       state.productList = sortTitle;
     },
     sortByPrice: (state) => {
@@ -74,7 +73,5 @@ const productSlice = createSlice({
 });
 
 export const productActions = productSlice.actions;
-
 const reducer = productSlice.reducer;
-
 export default reducer;

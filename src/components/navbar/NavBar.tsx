@@ -1,6 +1,8 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import AppBar from "@mui/material/AppBar";
-import "../../App.css";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
@@ -13,15 +15,14 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { CardMedia } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import { RootState, AppDispatch } from "../../redux/store";
-import { useSelector, useDispatch } from "react-redux";
+
+import "../../App.css";
+import { RootState } from "../../redux/store";
+import { Product } from "../../types/type";
 
 interface Props {
   window?: () => Window;
@@ -29,10 +30,6 @@ interface Props {
 }
 
 const drawerWidth = 240;
-
-// type Theme = {
-//   changeTheme: Function;
-// }
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -82,6 +79,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function NavBar(props: Props) {
+
+  let localStorageWishList: Product[] = JSON.parse(localStorage.getItem("favoriteList") || "null");
+  if(localStorageWishList == null) localStorageWishList = [];
+
   const cartList = useSelector((state: RootState) => state.cart.cartList);
   const wishList = useSelector((state: RootState) => state.wish.wishList);
   const { window } = props;
@@ -223,7 +224,7 @@ export default function NavBar(props: Props) {
                           color: "#fafafa",
                         }}
                       >
-                        {wishList.length > 0 ? wishList.length : null}
+                        {localStorageWishList.length > 0 ? localStorageWishList.length : null}
                       </Box>
                     </ListItemText>
                   </ListItemButton>

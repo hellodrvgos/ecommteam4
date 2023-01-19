@@ -5,8 +5,8 @@ import { Product } from "../../types/type";
 type InitialState = {
   productDetail: Product;
 };
-const initialState: InitialState = {
 
+const initialState: InitialState = {
     productDetail: {
         id: 0,
         title: "",
@@ -30,6 +30,7 @@ const productDetailSlice = createSlice({
     },
   },
 });
+
 export const detailActions = productDetailSlice.actions;
 const detailReducer = productDetailSlice.reducer;
 export default detailReducer;

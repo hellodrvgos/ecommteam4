@@ -1,23 +1,16 @@
-import React from "react";
-import { Box } from "@mui/material";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-
-import NavBar from "./components/navbar/NavBar";
 
 import "./App.css";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import MyWishList from "./pages/MyWishList";
 import Products from "./pages/Products";
-
-import ProductList from "./components/products/ProductList";
+import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
-// import ProductDetail from "./components/productDetail/ProductDetail";
-
-import { createTheme, ThemeProvider } from "@mui/material";
-
-import { useState } from "react";
 import ProductDetailItem from "./components/productDetail/ProductDetailItem";
+
+import { createTheme, ThemeProvider, Box } from "@mui/material";
 
 const light = createTheme({
   palette: {
@@ -57,8 +50,11 @@ const dark = createTheme({
     fontSize: 16,
   },
 });
+
 // localStorage.clear();
+
 function App() {
+  
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
 
   const changeTheme = () => {
@@ -77,7 +73,8 @@ function App() {
           <Route
             path="/products/:productId"
             element={<ProductDetailItem />}
-          ></Route>
+          >
+          </Route>
         </Routes>
         <Footer />
       </Box>
