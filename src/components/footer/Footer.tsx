@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import Stack from "@mui/material/Stack"
 
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
       <Paper
         sx={{
           width: "100%",
-          height: "50px",
+          height: "70px",
           position: "fixed",
           bottom: 0,
         }}
@@ -33,6 +34,7 @@ export default function Footer() {
               my: 1,
             }}
           >
+            <Stack direction={"column"}>
             <div className="icon">
               <FacebookIcon
                 sx={{
@@ -57,6 +59,7 @@ export default function Footer() {
             <Typography variant="caption" color="#5f869b">
               &copy; Integri4 - 2023
             </Typography>
+            </Stack>
           </Box>
         </Container>
       </Paper>
