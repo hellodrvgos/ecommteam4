@@ -13,19 +13,18 @@ import Loading from "../loading/Loading";
 import { productActions } from "../../redux/slice/products";
 import { Stack } from "@mui/system";
 
-import Grid from '@mui/material/Grid';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: 'center',
+  textAlign: "center",
   color: theme.palette.text.secondary,
   boxShadow: "none",
 }));
-
 
 export default function ProductList() {
   const productList = useSelector(
@@ -40,7 +39,7 @@ export default function ProductList() {
     dispatch(fetchProductData());
     setTimeout(() => {
       dispatchLoading(productActions.toggleLoading(false));
-    }, 2000);
+    }, 500);
   }, [dispatch, dispatchLoading]);
 
   const searchResultList = useSelector(
@@ -49,65 +48,68 @@ export default function ProductList() {
 
   const showProductList = () => {
     return (
-        <Box
-          display="flex"
-          flexWrap="wrap"
-          style={{
-            width: "90%",
-            marginInline: "auto",
-            marginBottom: "100px",
-          }}
-        >
-          {loading ? (
-            <Box style={{ position: "absolute", top: "50%", left: "50%" }}>
-              <Loading />
-            </Box>
-          ) : (
-            productList.map((product) => (
-              <ProductItem key={product.id} product={product} />
-            ))
-          )}
-        </Box>
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        style={{
+          width: "90%",
+          marginInline: "auto",
+          marginBottom: "100px",
+        }}
+      >
+        {loading ? (
+          <Box style={{ position: "absolute", top: "50%", left: "50%" }}>
+            <Loading />
+          </Box>
+        ) : (
+          productList.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))
+        )}
+      </Box>
     );
   };
 
   const showSearchResultList = () => {
     return (
       <Box
-      display="flex"
-      flexWrap="wrap"
-      style={{
-        width: "90%",
-        marginInline: "auto",
-        marginBottom: "100px",
-      }}
+        display="flex"
+        flexWrap="wrap"
+        style={{
+          width: "90%",
+          marginInline: "auto",
+          marginBottom: "100px",
+        }}
       >
-        {
-          searchResultList.map((product) => (
-            <ProductItem key={product.id} product={product} />
-          ))
-        }
+        {searchResultList.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
       </Box>
-    )
-  }
+    );
+  };
 
   return (
     <Box style={{ color: "grey" }}>
-      <Box sx={{ flexGrow: 1, width: "80%", margin: "70px auto", marginBottom: "50px" }}>
-        <Grid container spacing={2} >
-
+      <Box
+        sx={{
+          flexGrow: 1,
+          width: "80%",
+          margin: "70px auto",
+          marginBottom: "50px",
+        }}
+      >
+        <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Item sx={{textAling: "left", boxShadow: 1, height: "100%"}}>
-            <SortForm />
+            <Item sx={{ textAling: "left", boxShadow: 1, height: "100%" }}>
+              <SortForm />
             </Item>
           </Grid>
 
-          <Grid item xs={10} >
-            <Item sx={{textAling: "left", boxShadow: 1, height: "100%"}}>
-            <SearchBar />
+          <Grid item xs={10}>
+            <Item sx={{ textAling: "left", boxShadow: 1, height: "100%" }}>
+              <SearchBar />
             </Item>
           </Grid>
-
         </Grid>
       </Box>
 
