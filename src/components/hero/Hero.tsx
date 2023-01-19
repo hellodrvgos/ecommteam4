@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -6,9 +8,8 @@ import Typography from "@mui/material/Typography";
 import Stack from '@mui/material/Stack';
 import { Button } from "@mui/material";
 import Rating from "@mui/material/Rating";
-import { Link } from 'react-router-dom';
-import homehero from "../../assets/homehero.png"
 
+import homehero from "../../assets/images/homehero.png"
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
@@ -20,6 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 export default function Hero() {
+    
     return (
         <Box sx={{ flexGrow: 1, width: "1024px", margin: "70px auto", height: "1250px" }}>
             <Box sx={{marginBottom: "25px"}}>
@@ -68,9 +70,7 @@ export default function Hero() {
                 </Grid>
             </Grid>
 
-
             <Grid container spacing={2}>
-
                 <Grid item xs={4} >
                 <Item sx={{boxShadow: 1, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
                     <img src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg" height="150px" alt="jacket" />
@@ -148,9 +148,7 @@ export default function Hero() {
                     <Button variant="contained" component={Link} to="/products/5">View Product</Button>
                 </Item>
                 </Grid>
-
             </Grid>
-
         </Box>
     )
 }

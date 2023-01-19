@@ -1,37 +1,25 @@
-import React, {useState} from "react";
-import { Button,Snackbar,Alert, AlertTitle } from "@mui/material";
+import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch} from "react-redux";
+import {Params, useParams} from "react-router-dom"
 
-import {ProductDetail} from "../../types/type";
-import { cartActions } from "../../redux/slice/cartList";
-
+import { Button,Snackbar, Alert } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
-
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Stack from '@mui/material/Stack';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
-import { AppDispatch, RootState } from "../../redux/store";
-import fetchRelatedProductsData from "../../redux/thunk/relatedProducts";
-import {Params, useParams} from "react-router-dom"
-import { useEffect } from "react";
-
-import RelatedProducts from "./RelatedProduct";
-import { ConstructionOutlined } from "@mui/icons-material";
-
-import { wishActions } from "../../redux/slice/wishList";
-
-import { Product } from "../../types/type";
-import { loadavg } from "os";
-
 import Skeleton from '@mui/material/Skeleton';
 
+import { cartActions } from "../../redux/slice/cartList";
+import { AppDispatch, RootState } from "../../redux/store";
+import fetchRelatedProductsData from "../../redux/thunk/relatedProducts";
+import RelatedProducts from "./RelatedProduct";
+import { wishActions } from "../../redux/slice/wishList";
+import { Product } from "../../types/type";
 import fetchProductDetailData from "../../redux/thunk/productDetail";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -44,6 +32,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function ProductDetailItem(){
+
     let localStorageWishList: Product[] = JSON.parse(localStorage.getItem("favoriteList") || "null");
     if(localStorageWishList == null) localStorageWishList = [];
 
@@ -74,7 +63,7 @@ export default function ProductDetailItem(){
 
     const handleClickFavorite = () => {
         setOpenFavorite(true);
-      };
+    };
 
     const handleAddFavorite = () => {
     setAddFavorite(true);
@@ -265,34 +254,31 @@ export default function ProductDetailItem(){
                     )
                 }
                 </Box>
-            <Snackbar open={addFavorite} autoHideDuration={1000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="success">
-            <AlertTitle>Success</AlertTitle>
-            Item added to favorites!!
-            </Alert>
-            </Snackbar>
 
-            <Snackbar open={openFavorite} autoHideDuration={1000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-            The product is already inside favorite list!
-            </Alert>
-            </Snackbar>
+                <Snackbar open={addFavorite} autoHideDuration={1000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success">
+                    Product added to Wishlist !
+                    </Alert>
+                </Snackbar>
 
-            <Snackbar open={addCart} autoHideDuration={1000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="success">
-            <AlertTitle>Success</AlertTitle>
-            Item added to your cart!!
-            </Alert>
-            </Snackbar>
+                <Snackbar open={openFavorite} autoHideDuration={1000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+                    Product is already in Wishlist !
+                    </Alert>
+                </Snackbar>
 
-            <Snackbar open={openCart} autoHideDuration={1000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-            The product is already in your cart!!
-            </Alert>
-            </Snackbar>
+                <Snackbar open={addCart} autoHideDuration={1000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success">
+                    Product added in Shopping Cart !
+                    </Alert>
+                </Snackbar>
 
+                <Snackbar open={openCart} autoHideDuration={1000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+                    Product is already in Shopping Cart !
+                    </Alert>
+                </Snackbar>
             </Box>
         </Box>
-
     );
 }

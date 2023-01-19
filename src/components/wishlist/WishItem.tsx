@@ -1,28 +1,24 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import { styled } from "@mui/material/styles";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import Collapse from "@mui/material/Collapse";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Alert, AlertTitle, Rating, Snackbar } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Box } from "@mui/system";
 import { red } from "@mui/material/colors";
-import { useDispatch, useSelector } from "react-redux";
+import { CardActionArea, Stack } from "@mui/material";
 
 import { AppDispatch, RootState } from "../../redux/store";
 import { Product } from "../../types/type";
 import { wishActions } from "../../redux/slice/wishList";
 import { cartActions } from "../../redux/slice/cartList";
-
-import { CardActionArea, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
-
 
 type Prop = {
   product: Product;
@@ -32,6 +28,7 @@ type Prop = {
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
+
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -58,7 +55,7 @@ function WishItem({ product, setOpen }: Prop) {
   const updateProduct = {...product, quantity: 1}
   const isInCart= cartList.some((item)=> 
       item.id === product.id
-    );
+  );
   const [openCart, setOpenCart] = useState(false);
   const [addCart, setAddCart]= useState(false)
 
@@ -72,12 +69,13 @@ function WishItem({ product, setOpen }: Prop) {
         event?: React.SyntheticEvent | Event,
         reason?: string
     ) => {
-  if (reason === "clickaway") {
-      return;
-    }
-        setOpenCart(false);
-        setAddCart(false);
+      if (reason === "clickaway") {
+          return;
+      }
+      setOpenCart(false);
+      setAddCart(false);
     };
+
   return (
     <Box style={{width:"500px", margin: "0 auto" }}>
       <Card
@@ -134,20 +132,14 @@ function WishItem({ product, setOpen }: Prop) {
           </Stack>
         </Box>
       </Card>
-      {/* <Snackbar open={openFavorite} autoHideDuration={1000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          The product is already inside favorite list!
-        </Alert>
-      </Snackbar> */}
       <Snackbar open={addCart} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
-          <AlertTitle>Success</AlertTitle>
-          Item added to your cart!!
+          Product added in Shopping Cart !
         </Alert>
       </Snackbar>
       <Snackbar open={openCart} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          The product is already in your cart!!
+        Product is already in Shopping Cart !
         </Alert>
       </Snackbar>
     </Box>

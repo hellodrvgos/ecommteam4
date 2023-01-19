@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import MenuItem from "@mui/material/MenuItem";
-import { productActions } from "../../redux/slice/products";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
+
+import { productActions } from "../../redux/slice/products";
 import { AppDispatch } from "../../redux/store";
 import { fetchProductData } from "../../redux/thunk/products";
 

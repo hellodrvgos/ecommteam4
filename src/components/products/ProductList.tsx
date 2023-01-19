@@ -4,15 +4,12 @@ import { useEffect } from "react";
 import { RootState, AppDispatch } from "../../redux/store";
 import { fetchProductData } from "../../redux/thunk/products";
 import ProductItem from "./ProductItem";
-
-import { Box } from "@mui/material";
-
 import SearchBar from "../search/SearchBar";
 import SortForm from "../sort/SortForm";
 import Loading from "../loading/Loading";
 import { productActions } from "../../redux/slice/products";
-import { Stack } from "@mui/system";
 
+import { Box } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
@@ -28,9 +25,11 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export default function ProductList() {
+
   const productList = useSelector(
     (state: RootState) => state.products.productList
   );
+  
   const loading = useSelector((state: RootState) => state.products.loading);
   const dispatch = useDispatch<AppDispatch>();
   const dispatchLoading = useDispatch();
@@ -95,22 +94,18 @@ export default function ProductList() {
     <Box style={{ color: "grey" }}>
       <Box sx={{ flexGrow: 1, width: "80%", margin: "70px auto", marginBottom: "50px" }}>
         <Grid container spacing={2} >
-
           <Grid item xs={2}>
             <Item sx={{textAling: "left", boxShadow: 1, height: "100%"}}>
             <SortForm />
             </Item>
           </Grid>
-
           <Grid item xs={10} >
             <Item sx={{textAling: "left", boxShadow: 1, height: "100%"}}>
             <SearchBar />
             </Item>
           </Grid>
-
         </Grid>
       </Box>
-
       {searchResultList.length > 0 ? showSearchResultList() : showProductList()}
     </Box>
   );

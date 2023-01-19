@@ -1,16 +1,14 @@
-import React from "react";
-
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Stack from "@mui/material/Stack"
 
 export default function Footer() {
+
   return (
     <div className="footer">
       <Paper
@@ -55,7 +53,6 @@ export default function Footer() {
                 }}
               />
             </div>
-
             <Typography variant="caption" color="#5f869b">
               &copy; Integri4 - 2023
             </Typography>

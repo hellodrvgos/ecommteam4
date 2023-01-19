@@ -6,7 +6,6 @@ import { searchActions } from "../../redux/slice/search";
 
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
-import { autoBatchEnhancer } from "@reduxjs/toolkit";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -40,6 +39,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchBar() {
+  
   const [userInput, setUserInput] = useState<string>("");
 
   const dispatch = useDispatch();
