@@ -1,5 +1,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
+import "../../App.css";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
@@ -17,6 +18,8 @@ import { Link } from "react-router-dom";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { CardMedia } from "@mui/material";
+import iconBrand from "../../assets/1.png";
 
 interface Props {
   window?: () => Window;
@@ -91,8 +94,9 @@ export default function NavBar(props: Props) {
       onClick={handleDrawerToggle}
       sx={{ textAlign: "center" }}
     >
-      <Typography variant="h6" sx={{ my: 2 }}>
-        BrandStore
+      <Typography textAlign="center" variant="h6" sx={{ my: 2 }}>
+        <span className="logo-font">INTEGRI</span>{" "}
+        <span className="digit-color">4</span>
       </Typography>
       <Divider />
       <List>
@@ -158,13 +162,10 @@ export default function NavBar(props: Props) {
             variant="h6"
             component="h6"
             align="left"
-            style={{
-              fontFamily: "fantasy",
-              fontWeight: 600,
-            }}
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            BrandStore
+            <span className="logo-font">INTEGRI</span>{" "}
+            <span className="digit-color">4</span>
           </Typography>
 
           <Box
