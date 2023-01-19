@@ -58,23 +58,4 @@
 }
 .link-style:hover {
   color: #3d6374;
-}
-.clothes_card {
-  height: fit-content;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-bottom: 50px;
-}
 
-.clothes_img {
-  clip-path: circle(50%);
-}
-.logo-font {
-  font-family: "Cuprum", sans-serif;
-}
-.digit-color {
-  color: red;
-  font-family: "Playfair Display", serif;
-}

@@ -61,7 +61,7 @@ export default function SearchBar() {
   };
 
   return (
-    <Search style={{ color: "grey" }}>
+    <Search style={{ color: "grey", backgroundColor: "none"}}>
       <StyledInputBase
         placeholder="Search by Product Name"
         inputProps={{ "aria-label": "search" }}

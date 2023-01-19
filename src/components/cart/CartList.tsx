@@ -15,7 +15,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -43,12 +43,16 @@ export default function CartList() {
           }, 0);
         if (cartList.length === 0){
             return(
-                <div>
-                <h2>Your cart is empty...</h2>
-                <h2>Check out our collection!!!</h2>
-                <Link to="/products"><Button>Go</Button></Link>
-                </div>
-            );            
+                <Box
+                  style={{
+                    marginTop: "70px"
+                  }}
+                >
+                  <h2>Your cart is empty...</h2>
+                  <h2>Check out our <Link to="/products">collection!</Link></h2>
+                  {/* <Link to="/products"><Button>Go</Button></Link> */}
+                </Box>
+            );
         }
     return (
         // <div>

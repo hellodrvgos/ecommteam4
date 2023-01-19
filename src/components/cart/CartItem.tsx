@@ -14,13 +14,13 @@ export default function CartItem({product}: ProductDetail) {
     return (
         <Box  sx={{boxShadow: 1, height: "180px", width: "800px", paddingTop: "20px"}}>
             <Box >
-              <img src={product.image} width="5%" />
+              <img src={product.image} width="5%" alt="product" />
             </Box>
             <Box >
               {product.title} - <strong>$ {product.price.toFixed(2)}</strong>
             </Box>
             <Box className="icons">
-                <IconButton 
+                <IconButton
                     aria-label="increaseQuantity"
                     onClick={() => {
                       dispatch(cartActions.increaseQuantity(product.id))
@@ -47,6 +47,6 @@ export default function CartItem({product}: ProductDetail) {
                 </IconButton>
             </Box>
         </Box>
-            
+
     )
 }
