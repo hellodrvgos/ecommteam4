@@ -1,46 +1,95 @@
-# Getting Started with Create React App
+<!-- PROJECT LOGO -->
+<div align="center">
+  <a href="">
+    <img src="assets/favicon.png" alt="Logo" width="80" height="80">
+    ![Cart](src/assets/favicon.png)
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">Integri4 - Next-gen Ecommerce App</h3>
 
-## Available Scripts
+  <p align="center">
+    Integri4 is the Next-gen Ecommerce App built by Team 4 in 4 days
+    <br />
 
-In the project directory, you can run:
+    <a href="">View Demo</a>
 
-### `yarn start`
+  </p>
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#authors">Authors</a></li>
+  </ol>
+</details>
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+<!-- ABOUT THE PROJECT -->
+## About The Project
+![Screenshot](src/assets/Integri4.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The objective of this project was to develop from scratch an E-commerce website only with the following front-end languages:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [![React][React.js]][React-url]
+* [![Redux][Redux]][Redux-url]
+* [![TypeScript][TypeScript]][TypeScript-url]
+* [![HTML5][HTML5]][HTML5-url]
+* [![CSS3][CSS3]][CSS3-url]
+* [![Material-UI][Material-UI]][Material-UI-url]
 
-### `yarn eject`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<!-- ROADMAP -->
+## Roadmap
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [ ] Data fetched from this [API-url]
+- [ ] The user can search product by name
+- [ ] The user can find product details by clicking on a product
+- [ ] The user can add product(s) to the Cart and the Wish list
+- [ ] When the user add a product to Wish List the favorite icon should change the color
+- [ ] The user can change theme from light to dark
+- [ ] The website is responsive and mobile-friendly
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- AUTHORS -->
+## Authors:
+* Dragos [Dragos-url]
+* Alina [Alina-url]
+* Ataklti [Ataklti-url]
+* Antoine [Antoine-url]
 
-## Learn More
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Redux]: https://redux-toolkit.js.org/
+[Redux-url]: https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white
+[TypeScript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
+[HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[HTML5-url]: https://html.spec.whatwg.org/multipage/
+[CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[CSS3-url]: https://www.w3.org/Style/CSS/Overview.en.html
+[Material-UI]: https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white
+[Material-UI-url]: https://mui.com/
+[API-url]: https://fakestoreapi.com/products
+[Dragos-url]: https://github.com/hellodrvgos
+[Alina-url]: https://github.com/AlinaCGM
+[Ataklti-url]: https://github.com/B324W17
+[Antoine-url]: https://github.com/Ant1ne
