@@ -223,7 +223,7 @@ export default function NavBar(props: Props) {
                           color: "#fafafa",
                         }}
                       >
-                        {wishList.length}
+                        {wishList.length > 0 ? wishList.length : null}
                       </Box>
                     </ListItemText>
                   </ListItemButton>
@@ -247,7 +247,7 @@ export default function NavBar(props: Props) {
                           color: "#fafafa",
                         }}
                       >
-                        {cartList.length}
+                        {cartList.length > 0 ? cartList.length : null}
                       </Box>
                     </ListItemText>
                   </ListItemButton>
