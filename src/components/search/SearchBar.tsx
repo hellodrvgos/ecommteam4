@@ -20,7 +20,7 @@ const Search = styled("div")(({ theme }) => ({
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     //   marginLeft: theme.spacing(3),
-    width: "80%",
+    width: "100%",
     margin: "0 auto",
   },
 }));
@@ -61,7 +61,7 @@ export default function SearchBar() {
   };
 
   return (
-    <Search style={{ paddingTop: "50px", color: "grey" }}>
+    <Search style={{ color: "grey" }}>
       <StyledInputBase
         placeholder="Search by Product Name"
         inputProps={{ "aria-label": "search" }}

@@ -182,7 +182,7 @@ export default function ProductDetailItem({product}: ProductDetail){
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Item sx={{ textAlign: "left", marginBottom: "25px", borderBottom: "1px solid" }}>
-                            <Typography variant="h5" fontWeight={900}>RELATED PRODUCTS</Typography>
+                            <Typography variant="h6" fontWeight={900}>Related products</Typography>
                         </Item>
                     </Grid>
                 </Grid>

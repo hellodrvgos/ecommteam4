@@ -11,6 +11,21 @@ import SearchBar from "../search/SearchBar";
 import SortForm from "../sort/SortForm";
 import Loading from "../loading/Loading";
 import { productActions } from "../../redux/slice/products";
+import { Stack } from "@mui/system";
+
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  boxShadow: "none",
+}));
+
 
 export default function ProductList() {
   const productList = useSelector(
@@ -34,7 +49,6 @@ export default function ProductList() {
 
   const showProductList = () => {
     return (
-      <>
         <Box
           display="flex"
           flexWrap="wrap"
@@ -44,9 +58,6 @@ export default function ProductList() {
             marginBottom: "100px",
           }}
         >
-          <Box style={{ width: "100%" }}>
-            <SortForm />
-          </Box>
           {loading ? (
             <Box style={{ position: "absolute", top: "50%", left: "50%" }}>
               <Loading />
@@ -57,19 +68,48 @@ export default function ProductList() {
             ))
           )}
         </Box>
-      </>
     );
   };
 
   const showSearchResultList = () => {
-    return searchResultList.map((product) => (
-      <ProductItem key={product.id} product={product} />
-    ));
-  };
+    return (
+      <Box
+      display="flex"
+      flexWrap="wrap"
+      style={{
+        width: "90%",
+        marginInline: "auto",
+        marginBottom: "100px",
+      }}
+      >
+        {
+          searchResultList.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))
+        }
+      </Box>
+    )
+  }
 
   return (
     <Box style={{ color: "grey" }}>
-      <SearchBar />
+      <Box sx={{ flexGrow: 1, width: "80%", margin: "70px auto", marginBottom: "50px" }}>
+        <Grid container spacing={2} >
+
+          <Grid item xs={2}>
+            <Item sx={{textAling: "left", boxShadow: 1, height: "100%"}}>
+            <SortForm />
+            </Item>
+          </Grid>
+
+          <Grid item xs={10} >
+            <Item sx={{textAling: "left", boxShadow: 1, height: "100%"}}>
+            <SearchBar />
+            </Item>
+          </Grid>
+
+        </Grid>
+      </Box>
 
       {searchResultList.length > 0 ? showSearchResultList() : showProductList()}
     </Box>

@@ -8,7 +8,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import { CardActionArea, Stack } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -92,39 +92,43 @@ export default function ProductItem({ product }: ProductDetail) {
     setAddCart(false);
   };
   return (
-    <Box style={{ margin: "auto" }}>
+    <Box style={{width:"500px", margin: "0 auto" }}>
       <Card
         sx={{
-          width: 300,
+          width: 500,
+          margin: "0 auto",
           height: "auto",
-          marginInline: "1rem",
+          // marginInline: "1rem",
           marginBlock: "1rem",
         }}
       >
         <CardActionArea component={Link} to={`/products/${product.id}`}>
+        <Typography sx={{paddingTop: "20px"}}>{product.category.toLocaleUpperCase()}</Typography>
           <CardMedia
             component="img"
-            height="140"
+            height="200"
             image={product.image}
             alt="green iguana"
             sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
           />
           <CardContent>
             <Typography
-              style={{ height: 160 }}
+              style={{ height: "100px" }}
               gutterBottom
               variant="h6"
               component="div"
+              fontWeight={900}
             >
               {product.title}
             </Typography>
-            <Typography>{product.category}</Typography>
-            <Typography>{product.price}$</Typography>
+            <Rating name="read-only" value={product.rating.rate} readOnly sx={{marginBottom: "40px"}}/>
+            <Typography variant="h5" sx={{ fontWeight: "900"}}>$ {product.price}</Typography>
           </CardContent>
-
           </CardActionArea>
-          <Rating name="read-only" value={product.rating.rate} readOnly />
-          <FavoriteBorderIcon
+
+          <Box sx={{width: "100px", margin: "20px auto"}}>
+          <Stack direction={"row"} spacing={2}>
+            <IconButton
             aria-label="addWish"
             sx={{ color: isFavorite ? red[500] : "#474444" }}
             onClick={() => {
@@ -132,18 +136,22 @@ export default function ProductItem({ product }: ProductDetail) {
                 ? handleClickFavorite()
                 : dispatch(wishActions.addFav(product)) && handleAddFavorite();
             }}
-          />
-          <IconButton
-            aria-label="addCart"
-            onClick={() => {
-              isInCart
-                ? handleClickCart()
-                : dispatch(cartActions.addToCart(updateProduct)) && handleAddCart();
-            }}
-          >
-            <ShoppingCartOutlinedIcon sx={{ color: isInCart ? red[500] : "#474444" }}/>
-          </IconButton>
-          <Typography>Description</Typography>
+            >
+            <FavoriteBorderIcon />
+            </IconButton>
+            <IconButton
+              aria-label="addCart"
+              onClick={() => {
+                isInCart
+                  ? handleClickCart()
+                  : dispatch(cartActions.addToCart(updateProduct)) && handleAddCart();
+              }}
+            >
+              <ShoppingCartOutlinedIcon sx={{ color: isInCart ? red[500] : "#474444" }}/>
+            </IconButton>
+          </Stack>
+          </Box>
+          {/* <Typography>Description</Typography>
         <ExpandMore
           style={{}}
           expand={expanded}
@@ -167,7 +175,7 @@ export default function ProductItem({ product }: ProductDetail) {
           unmountOnExit
         >
           <Typography> {product.description}</Typography>
-        </Collapse>
+        </Collapse> */}
       </Card>
       <Snackbar open={addFavorite} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
