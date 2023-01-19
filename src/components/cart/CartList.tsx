@@ -45,12 +45,12 @@ export default function CartList() {
             return(
                 <Box
                   style={{
-                    marginTop: "70px"
+                    marginTop: "70px",
+                    color: "#717171"
                   }}
                 >
                   <h2>Your cart is empty...</h2>
-                  <h2>Check out our <Link to="/products">collection!</Link></h2>
-                  {/* <Link to="/products"><Button>Go</Button></Link> */}
+                  <h2>Check out our <Link to="/products" style={{ textDecoration: "none", color: "inherit"}}>collection!</Link></h2>
                 </Box>
             );
         }
