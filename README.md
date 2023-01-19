@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <a href="">
-    <img src="assets/favicon.png" alt="Logo" width="80" height="80">
+  <a href="https://www.freepnglogos.com/pics/shopping-cart">
+    <img src="" alt="Logo" width="80" height="80">
     ![Cart](src/assets/favicon.png)
   </a>
 
@@ -11,7 +11,7 @@
     Integri4 is the Next-gen Ecommerce App built by Team 4 in 4 days
     <br />
 
-    <a href="">View Demo</a>
+    <a href="https://integrifour.vercel.app/">View Demo</a>
 
   </p>
 </div>
@@ -78,8 +78,8 @@ The objective of this project was to develop from scratch an E-commerce website 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Redux]: https://redux-toolkit.js.org/
-[Redux-url]: https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white
+[Redux]: https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white
+[Redux-url]: https://redux-toolkit.js.org/
 [TypeScript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
 [TypeScript-url]: https://www.typescriptlang.org/
 [HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
