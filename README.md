@@ -1,9 +1,8 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <a href="https://www.freepnglogos.com/pics/shopping-cart">
-    <img src="" alt="Logo" width="80" height="80">
-    ![Cart](src/assets/favicon.png)
-  </a>
+    <a href="https://www.freepnglogos.com/pics/shopping-cart" title="Image from freepnglogos.com">
+    <img src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" width="80" height="80" alt="Logo"/>
+    </a>
 
 <h3 align="center">Integri4 - Next-gen Ecommerce App</h3>
 
