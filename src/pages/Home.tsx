@@ -101,7 +101,7 @@ export default function Home() {
       <Box
         style={{
           marginBottom: "50px",
-          height: "50vh",
+          height: "auto",
           width: "90%",
           margin: "auto",
           border: "1px solid black",

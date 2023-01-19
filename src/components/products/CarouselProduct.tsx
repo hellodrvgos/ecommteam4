@@ -1,33 +1,18 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProductData } from "../../redux/thunk/products";
-import { RootState, AppDispatch } from "../../redux/store";
-// import Carousel from "react-material-ui-carousel";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, Grid } from "@mui/material";
-import { Paper, Button } from "@mui/material";
+import { CardActionArea } from "@mui/material";
 import { Product } from "../../types/type";
 import { Box } from "@mui/system";
-// import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Rating from "@mui/material/Rating";
 
 type Props = {
   product: Product;
 };
 
 function CarouselProduct({ product }: Props) {
-  // const productCarousel = useSelector(
-  //   (state: RootState) => state.products.productList
-  // );
-  // const dispatch = useDispatch<AppDispatch>();
-
-  // useEffect(() => {
-  //   dispatch(fetchProductData());
-  // }, [dispatch]);
-
   return (
     <Box>
       <Card sx={{ maxWidth: 345 }}>
@@ -43,9 +28,7 @@ function CarouselProduct({ product }: Props) {
             <Typography gutterBottom variant="h5" component="div">
               {product.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards
-            </Typography>
+            <Rating name="read-only" value={product.rating.rate} readOnly />
           </CardContent>
         </CardActionArea>
       </Card>
