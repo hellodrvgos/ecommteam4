@@ -27,7 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
 function HeroRatingCards({ product }: Props) {
   return (
     <Box style={{ width: "100%" }}>
-      <Card>
+      <Card sx={{ maxWidth: 345 }}>
         <Item
           sx={{
             boxShadow: 1,

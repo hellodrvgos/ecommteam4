@@ -133,12 +133,9 @@ export default function Hero() {
 
       <Box
         style={{
-          marginBottom: "50px",
-          height: "auto",
-          width: "90%",
-          margin: "auto",
-          border: "1px solid black",
-          // display: "inline-flex",
+          border: "10px solid black",
+          backgroundColor: "#f1f1",
+          padding: "none",
         }}
       >
         <Carousel responsive={responsive}>
@@ -148,7 +145,7 @@ export default function Hero() {
         </Carousel>
       </Box>
 
-      {/* <Grid container spacing={2}>
+      {/* <Grid>
         <Grid item xs={4}>
           <Item
             sx={{
