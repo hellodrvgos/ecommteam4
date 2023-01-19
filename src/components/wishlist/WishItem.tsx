@@ -20,6 +20,10 @@ import { Product } from "../../types/type";
 import { wishActions } from "../../redux/slice/wishList";
 import { cartActions } from "../../redux/slice/cartList";
 
+import { CardActionArea, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
+
+
 type Prop = {
   product: Product;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -57,6 +61,7 @@ function WishItem({ product, setOpen }: Prop) {
     );
   const [openCart, setOpenCart] = useState(false);
   const [addCart, setAddCart]= useState(false)
+
   const handleClickCart = () => {
         setOpenCart(true);
     }
@@ -74,38 +79,50 @@ function WishItem({ product, setOpen }: Prop) {
         setAddCart(false);
     };
   return (
-    <Box style={{ margin: "auto" }}>
+    <Box style={{width:"500px", margin: "0 auto" }}>
       <Card
         sx={{
-          width: 300,
+          width: 500,
+          margin: "0 auto",
           height: "auto",
-          marginInline: "1rem",
+          // marginInline: "1rem",
           marginBlock: "1rem",
         }}
       >
-        <CardMedia
-          component="img"
-          height="140"
-          image={product.image}
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            style={{ height: 100 }}
-          >
-            {product.title}
-          </Typography>
-
-          <Typography>{product.category}</Typography>
-        </CardContent>
-
-        <Rating name="read-only" value={product.rating.rate} readOnly />
-        <CardActions>
-          <IconButton
-              aria-label="addToCart"
+        <CardActionArea component={Link} to={`/products/${product.id}`}>
+          <Typography sx={{paddingTop: "20px"}}>{product.category.toLocaleUpperCase()}</Typography>
+            <CardMedia
+              component="img"
+              height="200"
+              image={product.image}
+              alt="green iguana"
+              sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
+            />
+            <CardContent>
+              <Typography
+                style={{ height: "100px" }}
+                gutterBottom
+                variant="h6"
+                component="div"
+                fontWeight={900}
+              >
+                {product.title}
+              </Typography>
+              <Rating name="read-only" value={product.rating.rate} readOnly sx={{marginBottom: "40px"}}/>
+              <Typography variant="h5" sx={{ fontWeight: "900"}}>$ {product.price}</Typography>
+            </CardContent>
+        </CardActionArea>
+        <Box sx={{width: "100px", margin: "20px auto"}}>
+          <Stack direction={"row"} spacing={2}>
+            <IconButton
+            aria-label="addWish"
+            // sx={{ color: isFavorite ? red[500] : "#474444" }}
+            onClick={removeFav}
+            >
+            <DeleteIcon />
+            </IconButton>
+            <IconButton
+              aria-label="addCart"
               onClick={() => {
                 isInCart
                   ? handleClickCart()
@@ -113,39 +130,25 @@ function WishItem({ product, setOpen }: Prop) {
               }}
             >
               <ShoppingCartOutlinedIcon sx={{ color: isInCart ? red[500] : "#474444" }}/>
-          </IconButton>
-        </CardActions>
-        <CardActions>
-          <DeleteIcon
-            color="action"
-            aria-label="removeFav"
-            onClick={removeFav}
-          />
-        </CardActions>
-        <Typography>Description</Typography>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Typography> {product.description}</Typography>
-        </Collapse>
+            </IconButton>
+          </Stack>
+        </Box>
       </Card>
-      <Snackbar open={addCart} autoHideDuration={2000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success">
-              <AlertTitle>Success</AlertTitle>
-                Item added to your cart!!
-          </Alert>
+      {/* <Snackbar open={openFavorite} autoHideDuration={1000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          The product is already inside favorite list!
+        </Alert>
+      </Snackbar> */}
+      <Snackbar open={addCart} autoHideDuration={1000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          <AlertTitle>Success</AlertTitle>
+          Item added to your cart!!
+        </Alert>
       </Snackbar>
-      <Snackbar open={openCart} autoHideDuration={2000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-                The product is already in your cart!!
-          </Alert>
+      <Snackbar open={openCart} autoHideDuration={1000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          The product is already in your cart!!
+        </Alert>
       </Snackbar>
     </Box>
   );
