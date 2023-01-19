@@ -87,7 +87,7 @@ export default function NavBar(props: Props) {
 
   const drawer = (
     <Box
-      style={{ backgroundColor: "none", height: "100%" }}
+      style={{ backgroundColor: "none", height: "100%"  }}
       onClick={handleDrawerToggle}
       sx={{ textAlign: "center" }}
     >
@@ -141,7 +141,7 @@ export default function NavBar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", backgroundColor: "#8d8989" }}>
+    <Box sx={{ display: "flex", backgroundColor: "none" }}>
       <CssBaseline />
       <AppBar component="nav">
         <Toolbar>

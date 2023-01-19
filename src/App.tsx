@@ -21,6 +21,11 @@ import { useState } from "react";
 const light = createTheme({
   palette: {
     mode: "light",
+
+    background: {
+      default: "#FFFFFF",
+    },
+
     primary: {
       main: "#5f869b",
     },
@@ -40,7 +45,7 @@ const dark = createTheme({
     mode: "dark",
 
     background: {
-      default: "#ededef",
+      default: "#222222",
     },
     text: {
       primary: "#e1e4e7",

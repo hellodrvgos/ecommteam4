@@ -30,7 +30,7 @@ import { wishActions } from "../../redux/slice/wishList";
 import { Product } from "../../types/type";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -41,19 +41,19 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ProductDetailItem({product}: ProductDetail){
     let localStorageWishList: Product[] = JSON.parse(localStorage.getItem("favoriteList") || "null");
     if(localStorageWishList == null) localStorageWishList = [];
-  
+
     const dispatch = useDispatch<AppDispatch>();
 
     const cartList = useSelector((state: RootState) => state.cart.cartList);
     const updateProduct = {...product, quantity: 1}
-    const isInCart= cartList.some((item)=> 
+    const isInCart= cartList.some((item)=>
       item.id === product.id
     );
 
     const isDuplicated = localStorageWishList.some(
         (wishItem) =>
           wishItem.title.toLocaleLowerCase() === product.title.toLocaleLowerCase()
-      );    
+      );
 
     const [openCart, setOpenCart] = useState(false);
     const [addCart, setAddCart]= useState(false)
@@ -68,7 +68,7 @@ export default function ProductDetailItem({product}: ProductDetail){
     const handleAddFavorite = () => {
     setAddFavorite(true);
     };
-    
+
     const handleClickCart = () => {
         setOpenCart(true);
     }
@@ -121,7 +121,7 @@ export default function ProductDetailItem({product}: ProductDetail){
                                 style={{ paddingBottom: 25 }}
                                 gutterBottom
                                 variant="h6"
-                                component="div"  
+                                component="div"
                             >
                                 {product.category.toUpperCase()}
                             </Typography>
@@ -159,7 +159,7 @@ export default function ProductDetailItem({product}: ProductDetail){
                                             ? handleClickCart()
                                             : dispatch(cartActions.addToCart(updateProduct)) && handleAddCart();
                                         }}
-                                  
+
                                 >
                                     Add to Cart
                                 </Button>
@@ -222,6 +222,6 @@ export default function ProductDetailItem({product}: ProductDetail){
         </Snackbar>
 
         </Box>
-        
+
     );
 }

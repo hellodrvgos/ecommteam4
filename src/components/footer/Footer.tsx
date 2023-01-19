@@ -14,7 +14,6 @@ export default function Footer() {
     <div className="footer">
       <Paper
         sx={{
-          //   marginTop: "calc(10% + 60px)",
           width: "100%",
           height: "50px",
           position: "fixed",
@@ -22,7 +21,7 @@ export default function Footer() {
         }}
         component="footer"
         square
-        variant="outlined"
+        // variant="outlined"
       >
         <Container maxWidth="lg">
           <Box
