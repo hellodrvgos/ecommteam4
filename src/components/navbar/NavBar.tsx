@@ -19,7 +19,7 @@ import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { CardMedia } from "@mui/material";
-import iconBrand from "../../assets/1.png";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 interface Props {
   window?: () => Window;
@@ -90,7 +90,7 @@ export default function NavBar(props: Props) {
 
   const drawer = (
     <Box
-      style={{ backgroundColor: "none", height: "100%"  }}
+      style={{ backgroundColor: "none", height: "100%" }}
       onClick={handleDrawerToggle}
       sx={{ textAlign: "center" }}
     >
@@ -185,7 +185,9 @@ export default function NavBar(props: Props) {
               <Link style={{ textDecoration: "none", color: "#f8f8f8" }} to="/">
                 <ListItem disablePadding>
                   <ListItemButton>
-                    <ListItemText>HOME</ListItemText>
+                    <ListItemText>
+                      <HomeOutlinedIcon />
+                    </ListItemText>
                   </ListItemButton>
                 </ListItem>
               </Link>

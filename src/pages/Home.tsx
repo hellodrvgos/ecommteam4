@@ -26,7 +26,6 @@ const styles = {
 
 export default function Home() {
   return (
-
     // <Box style={{ width: "100%" }}>
     //   <Box style={styles.background}>
     //     <Typography
@@ -105,8 +104,5 @@ export default function Home() {
     //   </Box>
     // </Box>
     <Hero />
-=======
-    <Hero/>
-
   );
 }
