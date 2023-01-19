@@ -19,7 +19,7 @@ import { styled } from '@mui/material/styles';
 import Typography from "@mui/material/Typography";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -30,7 +30,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function WishList() {
   let localStorageWishList: Product[] = JSON.parse(localStorage.getItem("favoriteList") || "null");
   if(localStorageWishList == null) localStorageWishList = [];
-  
+
   // const wishList = useSelector((state: RootState) => state.wish.wishList);
   const [open, setOpen] = useState(false);
 
@@ -114,6 +114,6 @@ export default function WishList() {
 
     </Box>
 
-    
+
   );
 }

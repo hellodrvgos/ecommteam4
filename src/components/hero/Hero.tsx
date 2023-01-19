@@ -11,7 +11,7 @@ import homehero from "../../assets/homehero.png"
 
 
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
@@ -54,7 +54,7 @@ export default function Hero() {
 
                     <Grid item xs={4} >
                         <Item sx={{textAlign: "right", height: "600px" }}>
-                            <img src={homehero} height={550} />
+                            <img src={homehero} height={550} alt="woman shopping" />
                         </Item>
                     </Grid>
                 </Grid>
@@ -62,7 +62,7 @@ export default function Hero() {
 
             <Grid container spacing={2}>
                 <Grid item xs={12}>
-                    <Item sx={{ textAlign: "left", marginBottom: "25px", borderBottom: "1px solid" }}>
+                    <Item sx={{ textAlign: "left", marginBottom: "25px", boxShadow: 1 }}>
                         <Typography variant="h6" fontWeight={900}>Top rated products</Typography>
                     </Item>
                 </Grid>
@@ -73,7 +73,7 @@ export default function Hero() {
 
                 <Grid item xs={4} >
                 <Item sx={{boxShadow: 1, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
-                    <img src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg" height="150px" />
+                    <img src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg" height="150px" alt="jacket" />
                     <Typography
                         style={{ paddingBottom: 5, paddingTop: 15, height: "100px" }}
                         gutterBottom
@@ -99,7 +99,7 @@ export default function Hero() {
 
                 <Grid item xs={4} >
                 <Item sx={{boxShadow: 1, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
-                    <img src="https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg" height="150px" />
+                    <img src="https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg" height="150px" alt="SSD" />
                     <Typography
                         style={{ paddingBottom: 5, paddingTop: 15, height: "100px" }}
                         gutterBottom
@@ -125,7 +125,7 @@ export default function Hero() {
 
                 <Grid item xs={4} >
                 <Item sx={{boxShadow: 1, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
-                    <img src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg" height="150px" />
+                    <img src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg" height="150px" alt="bracelet" />
                     <Typography
                         style={{ paddingBottom: 5, paddingTop: 15, height: "100px" }}
                         gutterBottom
