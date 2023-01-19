@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <a href="">
-    <img src="assets/favicon.png" alt="Logo" width="80" height="80">
+  <a href="https://www.freepnglogos.com/pics/shopping-cart"></a>
+    <img src="" alt="Logo" width="80" height="80">
     ![Cart](src/assets/favicon.png)
   </a>
 
@@ -11,7 +11,7 @@
     Integri4 is the Next-gen Ecommerce App built by Team 4 in 4 days
     <br />
 
-    <a href="">View Demo</a>
+    <a href="https://integrifour.vercel.app/">View Demo</a>
 
   </p>
 </div>
