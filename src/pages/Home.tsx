@@ -5,7 +5,7 @@ import jacket from "../assets/jacket.jpg";
 import wristband from "../assets/wristband.jpg";
 import ring from "../assets/ring.jpg";
 import drive from "../assets/drive.jpg";
-import backgroundImg from "../assets/legs.jpg";
+import backgroundImg from "../assets/backgroundImage.jpg";
 
 import "../App.css";
 import { Box, Typography } from "@mui/material";
@@ -103,6 +103,6 @@ export default function Home() {
     //     />
     //   </Box>
     // </Box>
-    <Hero/>
+    <Hero />
   );
 }
