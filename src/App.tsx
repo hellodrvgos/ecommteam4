@@ -12,11 +12,12 @@ import Products from "./pages/Products";
 
 import ProductList from "./components/products/ProductList";
 import Footer from "./components/footer/Footer";
-import ProductDetail from "./components/productDetail/ProductDetail";
+// import ProductDetail from "./components/productDetail/ProductDetail";
 
 import { createTheme, ThemeProvider } from "@mui/material";
 
 import { useState } from "react";
+import ProductDetailItem from "./components/productDetail/ProductDetailItem";
 
 const light = createTheme({
   palette: {
@@ -75,7 +76,7 @@ function App() {
           <Route path="/products" element={<Products />}></Route>
           <Route
             path="/products/:productId"
-            element={<ProductDetail />}
+            element={<ProductDetailItem />}
           ></Route>
         </Routes>
         <Footer />

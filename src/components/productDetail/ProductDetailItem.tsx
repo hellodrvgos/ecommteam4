@@ -28,6 +28,11 @@ import { ConstructionOutlined } from "@mui/icons-material";
 import { wishActions } from "../../redux/slice/wishList";
 
 import { Product } from "../../types/type";
+import { loadavg } from "os";
+
+import Skeleton from '@mui/material/Skeleton';
+
+import fetchProductDetailData from "../../redux/thunk/productDetail";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
@@ -38,11 +43,17 @@ const Item = styled(Paper)(({ theme }) => ({
   boxShadow: "none",
 }));
 
-export default function ProductDetailItem({product}: ProductDetail){
+export default function ProductDetailItem(){
     let localStorageWishList: Product[] = JSON.parse(localStorage.getItem("favoriteList") || "null");
     if(localStorageWishList == null) localStorageWishList = [];
 
     const dispatch = useDispatch<AppDispatch>();
+
+    const product = useSelector((state: RootState)=> state.productDetail.productDetail);
+    const {productId} = useParams<Params>();
+    useEffect(()=>{
+        dispatch(fetchProductDetailData(productId));
+    }, [dispatch, productId])
 
     const cartList = useSelector((state: RootState) => state.cart.cartList);
     const updateProduct = {...product, quantity: 1}
@@ -105,28 +116,52 @@ export default function ProductDetailItem({product}: ProductDetail){
 
     const firstThreeRelated = relatedProductsCopy.slice(0, 3);
 
+    const [loading, setLoading] = useState<boolean>();
+    const [loadingRelated, setLoadingRelated] = useState<boolean>();
+
+    useEffect(() => {
+        product.id === 0 ? setLoading(true) : setLoading(false);
+    }, [product.id]);
+    
+    useEffect(() => {
+        firstThreeRelated.length < 1 ? setLoadingRelated(true) : setLoadingRelated(false);
+    }, [firstThreeRelated]);
+
     return (
         <Box>
+            <Box>
             <Box sx={{ flexGrow: 1, width: "80%", margin: "70px auto", marginBottom: "100px" }}>
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
                         <Item>
-                            <img src={product.image} width="350px" />
+                            {
+                                loading ? (<Skeleton sx={{ height: 400 }} animation="wave" variant="rectangular" />) : (<img src={product.image} width="350px" />)
+                            }
                         </Item>
                     </Grid>
 
                     <Grid item xs={6}>
                         <Item sx={{ textAlign: "left" }}>
-                            <Typography
+                            {
+                                loading ? (<Skeleton animation="wave" height={50} width="60%" />) : (
+                                <Typography
                                 style={{ paddingBottom: 25 }}
                                 gutterBottom
                                 variant="h6"
                                 component="div"
                             >
                                 {product.category.toUpperCase()}
-                            </Typography>
-                            <Rating name="read-only" value={product.rating.rate} readOnly style={{ height: 20 }}/>
-                            <Typography
+                                </Typography>
+                                )
+                            }
+
+                            {
+                                loading ? (<Skeleton animation="wave" height={30} width="40%" />) : (<Rating name="read-only" value={product.rating.rate} readOnly style={{ height: 20 }}/>)
+                            }
+
+                            {
+                                loading ? (<Skeleton animation="wave" height={80} width="90%" />) : (
+                                <Typography
                                 style={{ paddingBottom: 25 }}
                                 gutterBottom
                                 variant="h5"
@@ -134,15 +169,25 @@ export default function ProductDetailItem({product}: ProductDetail){
                                 fontWeight={900}
                             >
                                 {product.title}
-                            </Typography>
-                            <Typography
+                                </Typography>
+                                )
+                            }
+
+                            {
+                                loading ? (<Skeleton animation="wave" height={200} width="90%" />) : (
+                                <Typography
                                 style={{ paddingBottom: 50 }}
                                 gutterBottom
                                 variant="body1"
                                 component="div"
                             >
                                 {product.description}
-                            </Typography>
+                                </Typography>
+                                )
+                            }
+
+                            {
+                                loading ? (<Skeleton animation="wave" height={100} width="20%" />) : (
                                 <Typography
                                 style={{ paddingBottom: 25 }}
                                 gutterBottom
@@ -151,7 +196,10 @@ export default function ProductDetailItem({product}: ProductDetail){
                                 fontWeight={900}
                             >
                                 $ {product.price}
-                            </Typography>
+                                </Typography>
+                                )
+                            }
+
                             <Stack direction="row" spacing={4}>
                                 <Button variant="contained" endIcon={<ShoppingCartIcon />}
                                     onClick={() => {
@@ -169,7 +217,7 @@ export default function ProductDetailItem({product}: ProductDetail){
                                             ? handleClickFavorite()
                                             : dispatch(wishActions.addFav(product)) && handleAddFavorite();
                                         }}
-                                  >
+                                >
                                     Add to Wish List
                                 </Button>
                             </Stack>
@@ -187,40 +235,63 @@ export default function ProductDetailItem({product}: ProductDetail){
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={2}>
-                    {
-                        firstThreeRelated.map((product) => {
-                            return <RelatedProducts key={product.id} product={product}/>
-                        })
-                    }
-                </Grid>
+                {
+                    loadingRelated ? (
+                        <Grid container spacing={2}>
+                                        <Grid item xs={4} >
+                                <Item sx={{boxShadow: 1, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
+                                    <Skeleton animation="wave" height={400} width="100%" />
+                                </Item>
+                            </Grid>
+                            <Grid item xs={4} >
+                                <Item sx={{boxShadow: 1, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
+                                    <Skeleton animation="wave" height={400} width="100%" />
+                                </Item>
+                            </Grid>
+                            <Grid item xs={4} >
+                                <Item sx={{boxShadow: 1, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
+                                    <Skeleton animation="wave" height={400} width="100%" />
+                                </Item>
+                            </Grid>
+                        </Grid>
+                    ) : (
+                        <Grid container spacing={2}>
+                            {
+                                firstThreeRelated.map((product) => {
+                                    return <RelatedProducts key={product.id} product={product}/>
+                                })
+                            }
+                        </Grid>    
+                    )
+                }
+                </Box>
+            <Snackbar open={addFavorite} autoHideDuration={1000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+            <AlertTitle>Success</AlertTitle>
+            Item added to favorites!!
+            </Alert>
+            </Snackbar>
+
+            <Snackbar open={openFavorite} autoHideDuration={1000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+            The product is already inside favorite list!
+            </Alert>
+            </Snackbar>
+
+            <Snackbar open={addCart} autoHideDuration={1000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+            <AlertTitle>Success</AlertTitle>
+            Item added to your cart!!
+            </Alert>
+            </Snackbar>
+
+            <Snackbar open={openCart} autoHideDuration={1000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+            The product is already in your cart!!
+            </Alert>
+            </Snackbar>
+
             </Box>
-        <Snackbar open={addFavorite} autoHideDuration={1000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
-          <AlertTitle>Success</AlertTitle>
-          Item added to favorites!!
-        </Alert>
-        </Snackbar>
-
-        <Snackbar open={openFavorite} autoHideDuration={1000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          The product is already inside favorite list!
-        </Alert>
-        </Snackbar>
-
-        <Snackbar open={addCart} autoHideDuration={1000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
-          <AlertTitle>Success</AlertTitle>
-          Item added to your cart!!
-        </Alert>
-        </Snackbar>
-
-        <Snackbar open={openCart} autoHideDuration={1000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          The product is already in your cart!!
-        </Alert>
-        </Snackbar>
-
         </Box>
 
     );
