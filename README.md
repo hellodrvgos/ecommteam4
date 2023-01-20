@@ -9,11 +9,6 @@
   <p align="center">
     Integri4 is the Next-gen Ecommerce App built by Team 4 in 4 days
     <br />
-
-
-    [VIEW DEMO](https://integrifour.vercel.app/ "INTEGRI4")
-
-
   </p>
 </div>
 
