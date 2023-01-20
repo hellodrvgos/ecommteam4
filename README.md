@@ -61,10 +61,10 @@ The objective of this project was to develop from scratch an E-commerce website 
 
 <!-- AUTHORS -->
 ## Authors:
-* Dragos [Dragos-url]
-* Alina [Alina-url]
-* Ataklti [Ataklti-url]
-* Antoine [Antoine-url]
+* [Dragos]
+* [Alina]
+* [Ataklti]
+* [Antoine]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -84,7 +84,7 @@ The objective of this project was to develop from scratch an E-commerce website 
 [Material-UI]: https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white
 [Material-UI-url]: https://mui.com/
 [API-url]: https://fakestoreapi.com/products
-[Dragos-url]: https://github.com/hellodrvgos
-[Alina-url]: https://github.com/AlinaCGM
-[Ataklti-url]: https://github.com/B324W17
-[Antoine-url]: https://github.com/Ant1ne
+[Dragos]: https://github.com/hellodrvgos
+[Alina]: https://github.com/AlinaCGM
+[Ataklti]: https://github.com/B324W17
+[Antoine]: https://github.com/Ant1ne
