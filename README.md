@@ -49,7 +49,7 @@ The objective of this project was to develop from scratch an E-commerce website 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Data fetched from this [API-url]
+- [ ] Data fetched from this [API]
 - [ ] The user can search product by name
 - [ ] The user can find product details by clicking on a product
 - [ ] The user can add product(s) to the Cart and the Wish list
@@ -83,7 +83,7 @@ The objective of this project was to develop from scratch an E-commerce website 
 [CSS3-url]: https://www.w3.org/Style/CSS/Overview.en.html
 [Material-UI]: https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white
 [Material-UI-url]: https://mui.com/
-[API-url]: https://fakestoreapi.com/products
+[API]: https://fakestoreapi.com/products
 [Dragos]: https://github.com/hellodrvgos
 [Alina]: https://github.com/AlinaCGM
 [Ataklti]: https://github.com/B324W17
