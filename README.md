@@ -55,7 +55,6 @@ The objective of this project was to develop from scratch an E-commerce website 
 - [ ] The user can add product(s) to the Cart and the Wish list
 - [ ] When the user add a product to Wish List the favorite icon should change the color
 - [ ] The user can change theme from light to dark
-- [ ] The website is responsive and mobile-friendly
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
