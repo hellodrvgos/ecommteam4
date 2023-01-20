@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-    <a href="https://www.freepnglogos.com/pics/shopping-cart" title="Image from freepnglogos.com">
+    <a href="https://integrifour.vercel.app/">
     <img src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" width="80" height="80" alt="Logo"/>
     </a>
 
@@ -70,6 +70,7 @@ The objective of this project was to develop from scratch an E-commerce website 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[View Demo]: https://integrifour.vercel.app/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Redux]: https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white
