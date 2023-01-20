@@ -85,7 +85,7 @@ export default function CartList() {
       }
       </Stack>
 
-      <Box sx={{ flexGrow: 1, width: "100%", margin: "10px auto"}}>
+      <Box sx={{ flexGrow: 1, width: "100%", margin: "20px auto"}}>
         <Grid container >
 
           <Grid item xs={12} >

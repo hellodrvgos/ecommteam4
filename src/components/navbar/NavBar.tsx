@@ -189,7 +189,7 @@ export default function NavBar(props: Props) {
             >
               <Link style={{ textDecoration: "none", color: "#f8f8f8" }} to="/">
                 <ListItem disablePadding>
-                  <ListItemButton>
+                  <ListItemButton sx={{ textAlign: "center", paddingTop: "10px" }}>
                     <ListItemText>
                       <HomeOutlinedIcon />
                     </ListItemText>
@@ -201,7 +201,7 @@ export default function NavBar(props: Props) {
                 to="/products"
               >
                 <ListItem disablePadding>
-                  <ListItemButton sx={{ textAlign: "center" }}>
+                  <ListItemButton sx={{ textAlign: "center", height: "60px" }}>
                     <ListItemText>PRODUCTS</ListItemText>
                   </ListItemButton>
                 </ListItem>
@@ -210,8 +210,8 @@ export default function NavBar(props: Props) {
                 style={{ textDecoration: "none", color: "#f8f8f8" }}
                 to="/myWishList"
               >
-                <ListItem sx={{ position: "relative" }} disablePadding>
-                  <ListItemButton>
+                <ListItem sx={{ position: "relative", }} disablePadding>
+                  <ListItemButton sx={{ textAlign: "center", height: "60px" }}>
                     <ListItemText>
                       WISH LIST
                       <Box
@@ -235,7 +235,7 @@ export default function NavBar(props: Props) {
                 to="/shoppingCart"
               >
                 <ListItem disablePadding>
-                  <ListItemButton sx={{ textAlign: "center" }}>
+                  <ListItemButton sx={{ textAlign: "center", height: "60px" }}>
                     <ListItemText>
                       SHOPPING CART
                       <Box

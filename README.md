@@ -5,13 +5,9 @@
     </a>
 
 <h3 align="center">Integri4 - Next-gen Ecommerce App</h3>
-
   <p align="center">
     Integri4 is the Next-gen Ecommerce App built by Team 4 in 4 days
     <br />
-
-    <a href="https://integrifour.vercel.app/">View Demo</a>
-
   </p>
 </div>
 

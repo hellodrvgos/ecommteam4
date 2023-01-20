@@ -190,7 +190,7 @@ export default function ProductDetailItem(){
                             }
 
                             <Stack direction="row" spacing={4}>
-                                <Button variant="contained" endIcon={<ShoppingCartIcon />}
+                                <Button variant="contained"
                                     onClick={() => {
                                         isInCart
                                             ? handleClickCart()
@@ -200,7 +200,7 @@ export default function ProductDetailItem(){
                                 >
                                     Add to Cart
                                 </Button>
-                                <Button variant="outlined" endIcon={<FavoriteBorderIcon />}
+                                <Button variant="outlined"
                                     onClick={() => {
                                         isDuplicated
                                             ? handleClickFavorite()
@@ -218,7 +218,7 @@ export default function ProductDetailItem(){
             <Box sx={{ flexGrow: 1, width: "80%", margin: "100px auto" }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <Item sx={{ textAlign: "left", marginBottom: "25px", borderBottom: "1px solid" }}>
+                        <Item sx={{ textAlign: "left", marginBottom: "25px", borderBottom: "1px solid #CCC" }}>
                             <Typography variant="h6" fontWeight={900}>Related products</Typography>
                         </Item>
                     </Grid>

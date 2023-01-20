@@ -83,8 +83,8 @@ function WishItem({ product, setOpen }: Prop) {
           width: 500,
           margin: "0 auto",
           height: "auto",
-          // marginInline: "1rem",
           marginBlock: "1rem",
+          boxShadow: 5,
         }}
       >
         <CardActionArea component={Link} to={`/products/${product.id}`}>

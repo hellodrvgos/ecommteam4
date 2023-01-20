@@ -12,7 +12,7 @@ import { cartActions } from "../../redux/slice/cartList";
 export default function CartItem({product}: ProductDetail) {
     const dispatch = useDispatch();
     return (
-        <Box  sx={{boxShadow: 1, height: "180px", width: "800px", paddingTop: "20px"}}>
+        <Box  sx={{boxShadow: 5, height: "180px", width: "800px", paddingTop: "20px"}}>
           <Box >
             <img src={product.image} width="5%" alt="product" />
           </Box>

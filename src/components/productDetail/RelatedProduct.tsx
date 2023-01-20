@@ -25,7 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function RelatedProducts({product}: RelatedProduct) {
     return (
         <Grid item xs={4} >
-        <Item sx={{boxShadow: 1, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
+        <Item sx={{boxShadow: 5, width: "95%", margin: "0 auto", paddingTop: 3, paddingBottom: 5}}>
             <img src={product.image} height="150px" />
             <Typography
                 style={{ paddingBottom: 5, paddingTop: 15, height: "100px" }}

@@ -100,8 +100,8 @@ export default function ProductItem({ product }: ProductDetail) {
           width: 500,
           margin: "0 auto",
           height: "auto",
-          // marginInline: "1rem",
           marginBlock: "1rem",
+          boxShadow: 5,
         }}
       >
         <CardActionArea component={Link} to={`/products/${product.id}`}>
@@ -156,7 +156,7 @@ export default function ProductItem({ product }: ProductDetail) {
       </Card>
       <Snackbar open={addFavorite} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
-          Product is already in Wishlist !
+          Product is added in Wishlist !
         </Alert>
       </Snackbar>
       <Snackbar open={openFavorite} autoHideDuration={1000} onClose={handleClose}>
@@ -166,7 +166,7 @@ export default function ProductItem({ product }: ProductDetail) {
       </Snackbar>
       <Snackbar open={addCart} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
-          Product is already in Shopping Cart !
+          Product is added in Shopping Cart !
         </Alert>
       </Snackbar>
       <Snackbar open={openCart} autoHideDuration={1000} onClose={handleClose}>
