@@ -51,8 +51,6 @@ const dark = createTheme({
   },
 });
 
-// localStorage.clear();
-
 function App() {
   
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
